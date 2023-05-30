@@ -33,8 +33,34 @@ export default () => {
     </div>
   </section>
   `;
-
   container.innerHTML = template;
+
+  const btnLogin = container.querySelector('#btn-entrar');
+  const email = container.querySelector('#email');
+  const password = container.querySelector('#senha');
+  const btnGoogle = container.querySelector('#btn-google');
+
+  btnGoogle.addEventListener('click', (e) => {
+    e.preventDefault();
+    console.log('google ok');
+    loginGoogle();
+  });
+
+  btnLogin.addEventListener('click', (e) => {
+    e.preventDefault();
+    console.log(email.value);
+    console.log(password.value);
+    loginUser(email.value, password.value)
+      .then((userCredential) => {
+        const user = userCredential.user;
+        console.log(user);
+        // eslint-disable-next-line no-restricted-globals
+        location.hash = '#feed';
+      })
+      .catch(() => {
+        alert('Email ou senha inválidos');
+      });
+  });
 
   return container;
 };

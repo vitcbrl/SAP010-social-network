@@ -1,9 +1,9 @@
 // Este es el punto de entrada de tu aplicacion
 
 // import { myFunction } from './lib/index.js';
-import sobre from './pages/sobre/index.js';
-import inicio from './pages/inicio/index.js';
-import { getCities, db } from './firebase.js';
+import sobre from './pages/sobre/sobre.js';
+import inicio from './pages/inicio/login.js';
+import { getUsers, db } from './firebase.js';
 
 const main = document.querySelector('#root');
 
