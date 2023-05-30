@@ -1,3 +1,4 @@
+import { loginGoogle, loginUser } from '../../lib/index.js';
 export default () => {
   const container = document.createElement('div');
 

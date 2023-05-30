@@ -1,25 +1,31 @@
-import firebase from 'firebase/app';
-import 'firebase/auth';
+import { auth } from '../firebase.js';
+import { signInWithEmailAndPassword } from 'firebase/auth';
+import { getAuth, signInWithPopup, GoogleAuthProvider } from 'firebase/auth';
 
 // Função para fazer login com o Google
-export const loginGoogle = () => {
-  const provider = new firebase.auth.GoogleAuthProvider();
-  firebase
-    .auth()
-    .signInWithPopup(provider)
-    .then((result) => {
-      const user = result.user;
-      console.log(user);
-      // eslint-disable-next-line no-restricted-globals
-      location.hash = '#feed';
-    })
-    .catch((error) => {
-      console.error(error);
-      alert('Falha no login com o Google');
-    });
-};
+export const loginGoogle = getAuth();
+signInWithPopup(auth, provider)
+  .then((result) => {
+    // This gives you a Google Access Token. You can use it to access the Google API.
+    const credential = GoogleAuthProvider.credentialFromResult(result);
+    const token = credential.accessToken;
+    // The signed-in user info.
+    const user = result.user;
+    // IdP data available using getAdditionalUserInfo(result)
+    // ...
+  })
+  .catch((error) => {
+    // Handle Errors here.
+    const errorCode = error.code;
+    const errorMessage = error.message;
+    // The email of the user's account used.
+    const email = error.customData.email;
+    // The AuthCredential type that was used.
+    const credential = GoogleAuthProvider.credentialFromError(error);
+    // ...
+  });
 
 // Função para fazer login com email e senha
 export const loginUser = (email, password) => {
-  return firebase.auth().signInWithEmailAndPassword(email, password);
+  return signInWithEmailAndPassword(auth, email, password); //importa dessa nova maneira que é o novo
 };

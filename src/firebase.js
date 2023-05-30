@@ -1,6 +1,7 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from 'firebase/app';
 import { getFirestore, collection, getDocs } from 'firebase/firestore/lite';
+import { getAuth } from 'firebase/auth';
 // Follow this pattern to import other Firebase services
 // import { } from 'firebase/<service>';
 // TODO: Add SDKs for Firebase products that you want to use
@@ -19,8 +20,10 @@ const firebaseConfig = {
 };
 
 // Initialize Firebase
-const app = initializeApp(firebaseConfig);
+export const app = initializeApp(firebaseConfig);
 export const db = getFirestore(app);
+// Initialize Firebase Authentication and get a reference to the service
+export const auth = getAuth(app);
 
 // Get a list of cities from your database
 export async function getUsers(db) {
