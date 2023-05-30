@@ -31,7 +31,7 @@ export default () => {
         </form>
       </div>
         <p class="or">ou</p>
-        <a href="#register" class="nova-conta">Criar Nova Conta</a>
+        <a href="#registro" class="nova-conta">Criar Nova Conta</a>
     </div>
   </section>
   `;
