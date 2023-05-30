@@ -3,6 +3,10 @@ export default () => {
   const container = document.createElement('div');
 
   const template = `
+  <nav class="links">
+        <a class="inicioA" href="../pages/login.js">INÍCIO</a>
+        <a class="sobreA" href="../pages/sobre.js">SOBRE</a>
+  </nav> 
   <section class="content">
     <div class="create">
       <div class="title">
