@@ -21,7 +21,8 @@ const init = () => {
         break;
       case '#posts':
         main.appendChild(posts());
-        case '#registro':
+        break;
+      case '#registro':
         main.appendChild(registro());
         break;
       default:
