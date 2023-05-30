@@ -3,6 +3,7 @@
 // import { myFunction } from './lib/index.js';
 import sobre from './pages/sobre/sobre.js';
 import inicio from './pages/inicio/login.js';
+import registro from './pages/registro/registro.js';
 import { getUsers, db } from './firebase.js';
 
 const main = document.querySelector('#root');
@@ -16,6 +17,9 @@ const init = () => {
         break;
       case '#sobre':
         main.appendChild(sobre());
+        break;
+        case '#registro':
+        main.appendChild(registro());
         break;
       default:
         main.appendChild(inicio());
