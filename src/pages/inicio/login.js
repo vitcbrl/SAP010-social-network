@@ -1,4 +1,5 @@
 import { loginGoogle, loginUser } from '../../lib/index.js';
+
 export default () => {
   const container = document.createElement('div');
 
@@ -18,10 +19,10 @@ export default () => {
         <h1 class="descricao-entrar">ENTRAR</h1>
         <button class="link-google" id="btn-google"><i class="fab fa-google"></i> Entrar com o Google</button>
         <form class="login">
-          <label for="email">E-mail</label>
+          <label class='label' for="email">E-mail</label>
           <input type="email" class="email-login" id="email" name="email" placeholder="user@gmail.com" required/>
           <div class="linha-horizontal"></div>
-          <label for="senha">Senha</label>
+          <label class='label' for="senha">Senha</label>
           <input type="password" class="senha-login" id="senha" name="password" placeholder="Senha" required/>
           <div class="linha-horizontal"></div>
           <div class="btn-enter">
@@ -56,7 +57,7 @@ export default () => {
         const user = userCredential.user;
         console.log(user);
         // eslint-disable-next-line no-restricted-globals
-        location.hash = '#feed';
+        location.hash = '#posts';
       })
       .catch(() => {
         alert('Email ou senha inválidos');

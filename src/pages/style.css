@@ -1,0 +1,141 @@
+@import url('https://fonts.googleapis.com/css2?family=Iceland&display=swap');
+
+*{
+  margin: 0;
+  padding: 0;
+}
+
+body{
+  background: #1E1E1E;
+  font-family: 'Iceland', cursive;
+}
+
+/* LOGIN  */
+
+.content{
+  /* border: 1px solid red; */
+  width: 100%;
+  height: 95vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.title{
+  text-align: center;
+}
+
+.title-logo{
+  color: white;
+  font-size: 70px;
+}
+
+.create{
+  width: 580px;
+}
+
+.logo img{
+  width: 85%;
+}
+
+.inicio{
+  width: 500px;
+  height: 529px;
+  color: white;
+}
+
+.descricao-entrar{
+  font-size: 40px;
+  margin-bottom: 10px;
+}
+
+.link-google, .btn-entrar{
+  border-radius: 5px;
+  background: #09E111;
+  font-family: 'Iceland', cursive;
+  font-size: 18px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.link-google{
+  width: 200px;
+  height: 40px;
+  font-size: 18px;
+  border: none;
+}
+
+.link-google:hover{
+  background-color: #60c063;
+}
+
+.login{
+  /* border: 2px solid red; */
+  margin-top: 25px;
+  height: 320px;
+}
+
+.label{
+  font-size: 35px;
+}
+
+.email-login, .senha-login{
+  display: block;
+  width: 280px;
+  height: 50px;
+  border-radius: 5px;
+  outline: none;
+}
+
+.btn-entrar{
+  width: 282px;
+  height: 50px;
+  font-size: 35px;
+  margin-top: 20px;
+  border: none;
+}
+
+.container{
+}
+
+/* POSTS  */
+.geral{
+  width: 100%;
+  height: 4rem;
+  background: #3a3939;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: white;
+  font-size: 25px;
+}
+
+.Techsisters{
+  margin-left: 1rem;
+}
+
+.links{
+  margin-right: 3rem;
+}
+
+.inicioA, .sobreA {
+  text-decoration: none;
+  color: black;
+  padding: 7px 20px;
+  border-radius: 30px;
+  background-color: #09E111;
+  margin-left: 15px;
+}
+
+.inicioA:hover, .sobreA:hover{
+  background-color: #60c063;
+}
+
+footer{
+  color: white;
+}
+
+.github{
+  color: white;
+  text-decoration: none;
+}
