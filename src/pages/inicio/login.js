@@ -24,7 +24,6 @@ export default () => {
           <div class="linha-horizontal"></div>
           <label class='label' for="senha">Senha</label>
           <input type="password" class="senha-login" id="senha" name="password" placeholder="Senha" required/>
-          <div class="linha-horizontal"></div>
           <div class="btn-enter">
             <input type="submit" class="btn-entrar" id="btn-entrar" value="Entrar">
           </div>
