@@ -1,5 +1,5 @@
 import { auth } from '../firebase.js';
-import { signInWithEmailAndPassword } from 'firebase/auth';
+import { signInWithEmailAndPassword, createUserWithEmailAndPassword } from 'firebase/auth';
 import { getAuth, signInWithPopup, GoogleAuthProvider } from 'firebase/auth';
 
 // Função para fazer login com o Google
@@ -33,4 +33,9 @@ export const loginGoogle = () => {
 // Função para fazer login com email e senha
 export const loginUser = (email, password) => {
   return signInWithEmailAndPassword(auth, email, password); //importa dessa nova maneira que é o novo
+};
+
+// Função para criar login com email e senha
+export const loginCreate = (email, password) => {
+  return createUserWithEmailAndPassword(auth, email, password);
 };
