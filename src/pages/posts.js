@@ -10,9 +10,18 @@ export default () => {
       </nav>  
     </header>
 
-    <main>
-      
-    </main>
+    <div class="overview-title">
+        <h1>Seja bem-vinda ao Techsisters! Mostre ao mundo seu potencial!</h1>
+        </div>
+        <section class="feed-container" id="feed-container">
+            <div class="feed-novo-post">
+                <textarea class="feed-text-box" id="text-post" placeholder="Escreva aqui seu post..." name="story" rows="5" cols="33"></textarea>
+            </div>
+            <div id="post-area">
+            </div>
+        </section>
+
+    
   `;
   container.innerHTML = template;
 
