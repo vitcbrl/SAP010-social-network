@@ -47,11 +47,12 @@ export default () => {
     loginCreate(email.value, password.value)
       .then((userCredential) => {
         const user = userCredential.user;
-        // location.hash = '#posts';
+        location.hash = '#posts';
       })
       .catch((error) => {
-        const errorCode = error.code;
-        const errorMessage = error.message;
+        /* const errorCode = error.code;
+        const errorMessage = error.message; */
+        alert ("Por favor, adicione seus dados");
       });
   });
 
