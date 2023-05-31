@@ -55,7 +55,6 @@ export default () => {
       .then((userCredential) => {
         const user = userCredential.user;
         console.log(user);
-        // eslint-disable-next-line no-restricted-globals
         location.hash = '#posts';
       })
       .catch(() => {

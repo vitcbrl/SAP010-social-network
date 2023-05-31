@@ -5,8 +5,8 @@ export default () => {
     <header class="geral">
     <h1 class="Techsisters">Techsisters</h1>
       <nav class="links">
-        <a class="inicioA" href="../pages/login.js">INÍCIO</a>
-        <a class="sobreA" href="../pages/sobre.js">SOBRE</a>
+        <a class="inicioA" href="#login">INÍCIO</a>
+        <a class="sobreA" href="#sobre">SOBRE</a>
       </nav>  
     </header>
 
