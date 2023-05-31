@@ -47,6 +47,7 @@ export default () => {
     loginCreate(email.value, password.value)
       .then((userCredential) => {
         const user = userCredential.user;
+        alert ("seu cadastro foi finalizado. clique em OK para postar!");
         location.hash = '#posts';
       })
       .catch((error) => {

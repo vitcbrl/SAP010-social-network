@@ -192,3 +192,24 @@ footer{
   color: white;
   text-decoration: none;
 }
+
+/* PÁGINA POST */
+
+.overview-title {
+  color: white;
+  margin: 20px 30px 30px 30px;
+  text-align: center;
+}
+
+
+.feed-novo-post{
+  display: flex;
+  justify-content: center;
+  margin-bottom: 30px;
+  
+  
+}
+.feed-text-box{
+  width: 50%;
+  height: 100%;
+}
