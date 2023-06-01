@@ -49,18 +49,27 @@ export default () => {
 
   btnLogin.addEventListener('click', (e) => {
     e.preventDefault();
-    console.log(email.value);
-    console.log(password.value);
-    loginUser(email.value, password.value)
-      .then((userCredential) => {
-        const user = userCredential.user;
-        console.log(user);
-        location.hash = '#posts';
-      })
-      .catch(() => {
-        alert('Email ou senha inválidos');
-      });
+    if (validateEmail(email.value)) {
+      console.log(email.value);
+      console.log(password.value);
+      loginUser(email.value, password.value)
+        .then((userCredential) => {
+          const user = userCredential.user;
+          console.log(user);
+          location.hash = '#posts';
+        })
+        .catch(() => {
+          alert('Email ou senha inválidos');
+        });
+    } else {
+      alert('Por favor, insira um email válido');
+    }
   });
+
+  function validateEmail(email) {
+    const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return regex.test(email);
+  }
 
   return container;
 };

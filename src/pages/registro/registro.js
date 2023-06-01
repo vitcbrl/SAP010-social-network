@@ -42,20 +42,31 @@ export default () => {
 
   btnLoginCreate.addEventListener('click', (e) => {
     e.preventDefault();
-    console.log(email.value);
-    console.log(password.value);
-    loginCreate(email.value, password.value)
-      .then((userCredential) => {
-        const user = userCredential.user;
-        alert ("seu cadastro foi finalizado. clique em OK para postar!");
-        location.hash = '#posts';
-      })
-      .catch((error) => {
-        /* const errorCode = error.code;
+    if (validateEmail(email.value)) {
+      console.log(email.value);
+      console.log(password.value);
+      loginCreate(email.value, password.value)
+        .then((userCredential) => {
+          const user = userCredential.user;
+          alert('Seu cadastro foi finalizado. Clique em OK para postar!');
+          location.hash = '#posts';
+        })
+        .catch((error) => {
+          /* const errorCode = error.code;
         const errorMessage = error.message; */
-        alert ("Por favor, adicione seus dados");
-      });
+          alert(
+            'Ocorreu um erro ao criar o usuário. Por favor, tente novamente mais tarde.',
+          );
+        });
+    } else {
+      alert('Por favor, insira um email válido.');
+    }
   });
+
+  function validateEmail(email) {
+    const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return regex.test(email);
+  }
 
   return container;
 };
