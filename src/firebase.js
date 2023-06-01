@@ -1,7 +1,8 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from 'firebase/app';
-import { getFirestore, collection, getDocs } from 'firebase/firestore/lite';
+import { getFirestore, collection, getDocs, addDoc} from 'firebase/firestore/lite';
 import { getAuth } from 'firebase/auth';
+
 // Follow this pattern to import other Firebase services
 // import { } from 'firebase/<service>';
 // TODO: Add SDKs for Firebase products that you want to use
@@ -25,6 +26,9 @@ export const db = getFirestore(app);
 // Initialize Firebase Authentication and get a reference to the service
 export const auth = getAuth(app);
 
+
+
+
 // Get a list of cities from your database
 export async function getUsers(db) {
   const usersCol = collection(db, 'users'); //pegar a minha coleçao de usuarios que é passado pelo meu db
@@ -32,3 +36,12 @@ export async function getUsers(db) {
   const usersList = usersSnapshot.docs.map((doc) => doc.data()); //mapeia esses dados e coloca dentro de um array, é um array de usuarios que é o retorno da function
   return usersList;
 }
+
+
+// Adicione um post ao banco de dados
+export  async function addPost(db, post) {
+  const postsCol = collection(db, 'posts');
+  await addDoc(postsCol, post);
+}
+
+export default getUsers;
