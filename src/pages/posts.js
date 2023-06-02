@@ -1,4 +1,5 @@
 import { addPost, db, getPosts } from '../firebase';
+import { userStateChanged, userStateLogout } from '../lib/index.js';
 
 export default () => {
   const container = document.createElement('div');
@@ -7,8 +8,8 @@ export default () => {
     <header class="geral">
       <h1 class="Techsisters">Techsisters</h1>
       <nav class="links">
-        <a class="inicioA" href="#login">INÍCIO</a>
         <a class="sobreA" href="#sobre">SOBRE</a>
+        <a class="inicioA" href="#login">SAIR</a>
       </nav>  
     </header>
 
@@ -25,8 +26,21 @@ export default () => {
 
   container.innerHTML = template;
 
+  const btnSair = container.querySelector('.inicioA');
   const btnEnvio = container.querySelector('#post-button');
   const postArea = container.querySelector('#post-area');
+
+  btnSair.addEventListener('click', async () => {
+    try {
+      console.log('Deslogou');
+      await userStateLogout(userStateChanged);
+      // redirecionar o usuário para outra página
+      window.location.href = '#login';
+    } catch (error) {
+      console.log('Erro ao fazer logout:', error);
+      // Lógica para lidar com erros no logout
+    }
+  });
 
   btnEnvio.addEventListener('click', async (e) => {
     const textPost = document.getElementById('text-post').value;

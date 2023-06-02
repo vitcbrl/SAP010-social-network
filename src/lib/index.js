@@ -1,6 +1,15 @@
 import { auth } from '../firebase.js';
-import { signInWithEmailAndPassword, createUserWithEmailAndPassword } from 'firebase/auth';
-import { getAuth, signInWithPopup, GoogleAuthProvider } from 'firebase/auth';
+import {
+  signInWithEmailAndPassword,
+  createUserWithEmailAndPassword,
+} from 'firebase/auth';
+import {
+  getAuth,
+  signInWithPopup,
+  GoogleAuthProvider,
+  onAuthStateChanged,
+  signOut,
+} from 'firebase/auth';
 
 // Função para fazer login com o Google
 // Função para fazer login com o Google
@@ -39,3 +48,17 @@ export const loginUser = (email, password) => {
 export const loginCreate = (email, password) => {
   return createUserWithEmailAndPassword(auth, email, password);
 };
+
+// função para manter o usuário logado
+export function userStateChanged(callback) {
+  const auth = getAuth(app);
+  onAuthStateChanged(auth, callback);
+}
+
+// função para deslogar o usuário
+export function userStateLogout() {
+  const auth = getAuth();
+  signOut(auth)
+    .then(() => {})
+    .catch(() => {});
+}
