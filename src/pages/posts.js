@@ -1,4 +1,4 @@
-import { addPost , db } from "../firebase";
+import { addPost, db, getPosts } from '../firebase';
 
 export default () => {
   const container = document.createElement('div');
@@ -26,25 +26,48 @@ export default () => {
   container.innerHTML = template;
 
   const btnEnvio = container.querySelector('#post-button');
+  const postArea = container.querySelector('#post-area');
 
   btnEnvio.addEventListener('click', async (e) => {
     const textPost = document.getElementById('text-post').value;
 
     if (textPost.trim() !== '') {
-      const posts = {
+      const post = {
         título: 'Meu primeiro post',
         conteúdo: textPost,
       };
 
       try {
-        await addPost(db, posts);
+        await addPost(db, post);
         alert('Post adicionado com sucesso');
         document.getElementById('text-post').value = '';
+        await displayPosts();
       } catch (error) {
         alert('Erro ao adicionar o post: ' + error);
       }
     }
   });
+
+  async function displayPosts() {
+    postArea.innerHTML = ''; // Limpar o conteúdo anterior
+
+    try {
+      const posts = await getPosts(db);
+      posts.forEach((post) => {
+        const postElement = document.createElement('div');
+        postElement.innerHTML = `
+          <h3>${post.título}</h3>
+          <p>${post.conteúdo}</p>
+          <hr>
+        `;
+        postArea.appendChild(postElement);
+      });
+    } catch (error) {
+      console.log('Erro ao obter os posts:', error);
+    }
+  }
+
+  displayPosts(); // Exibir os posts ao carregar a página
 
   return container;
 };
