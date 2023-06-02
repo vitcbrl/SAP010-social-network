@@ -44,7 +44,10 @@ export default () => {
   btnGoogle.addEventListener('click', (e) => {
     e.preventDefault();
     console.log('google ok');
-    loginGoogle();
+    loginGoogle()
+      .then(() => {
+        location.hash = '#posts';
+      });
   });
 
   btnLogin.addEventListener('click', (e) => {
