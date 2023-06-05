@@ -1,4 +1,4 @@
-import { auth } from '../firebase.js';
+import { auth, app } from '../firebase.js';
 import {
   signInWithEmailAndPassword,
   createUserWithEmailAndPassword,
@@ -12,6 +12,7 @@ import {
 } from 'firebase/auth';
 import {
   getFirestore,
+  doc,
   updateDoc,
   deleteDoc,
   increment,
