@@ -1,5 +1,4 @@
 import { addPost, db, getPosts, auth } from '../firebase';
-import { likePost, editPost, deletePost } from '../lib/index.js';
 import { userStateChanged, userStateLogout } from '../lib/index.js';
 
 export default () => {
@@ -72,16 +71,18 @@ export default () => {
       posts.forEach((post) => {
         const postElement = document.createElement('div');
         postElement.className = 'content-post';
+        postElement.className = 'content-post';
         postElement.innerHTML = `
 
         <section class = "content">
           <h3 class="contentTitle">${post.name}</h3>
           <p class="contentParag">${post.conteúdo}</p>
           <div class="button-content">
-          <button class="like-button" data-post-id="${post.id}">❤️</button>
+          <button class="like-button" >❤️</button>
 
-          <button class="edit-button" data-post-id="${post.id}">✏️</button>
-          <button class="delete-button" data-post-id="${post.id}">🗑️</button>
+          <button class="edit-button" >✏️</button>
+          <button class="delete-button" >🗑️</button>
+
           </div>
           
         </section>
