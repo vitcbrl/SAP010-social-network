@@ -74,12 +74,8 @@ export default () => {
         postElement.className = "content-post";
         postElement.innerHTML = `
 
-          <h3>${post.name}</h3>
-          <p>${post.conteúdo}</p>
-          <button class="like-button" data-post-id="${post.id}">Like</button>
-
         <section class = "content">
-          <h3 class="contentTitle">${post.título}</h3>
+          <h3 class="contentTitle">${post.name}</h3>
           <p class="contentParag">${post.conteúdo}</p>
           <div class="button-content">
           <button class="like-button" data-post-id="${post.id}">❤️</button>
