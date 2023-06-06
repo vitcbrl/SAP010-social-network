@@ -50,7 +50,7 @@ export default () => {
       const post = {
         name: auth.currentUser.displayName,
         conteúdo: textPost,
-        like: [],
+        like: [], //o like esta vindo para ca
       };
 
       try {
@@ -71,7 +71,7 @@ export default () => {
       const posts = await getPosts(db);
       posts.forEach((post) => {
         const postElement = document.createElement('div');
-        postElement.className = "content-post";
+        postElement.className = 'content-post';
         postElement.innerHTML = `
 
         <section class = "content">
@@ -93,8 +93,8 @@ export default () => {
         const deleteButton = postElement.querySelector('.delete-button');
 
         likeButton.addEventListener('click', () => {
-          const postId = likeButton.getAttribute('data-post-id');
-          likePost(postId);
+          const postId = likeButton.getAttribute('data-post-id'); //ele ta puxando meu id no meu firebase.js
+          console.log(likePost(postId)); // aqui estou puxando meu post id para funcionar na minha function
         });
 
         editButton.addEventListener('click', () => {

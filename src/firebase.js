@@ -50,6 +50,9 @@ export default getUsers;
 export async function getPosts(db) {
   const postsCol = collection(db, 'posts');
   const postsSnapshot = await getDocs(postsCol);
-  const postsList = postsSnapshot.docs.map((doc) => doc.data());
+  const postsList = postsSnapshot.docs.map((doc) => ({
+    id: doc.id,
+    ...doc.data(),
+  }));
   return postsList;
 }
