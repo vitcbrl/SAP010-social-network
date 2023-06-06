@@ -249,7 +249,13 @@ footer{
 
 .button-content,  .like-button, .edit-button, .delete-button{
   padding: 5px;
-  
-  
+  font-size: 18px;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+.edit-button:hover, .delete-button:hover{
+  color: #504e4e;
 }
 
