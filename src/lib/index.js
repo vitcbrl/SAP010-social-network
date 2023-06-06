@@ -88,9 +88,10 @@ export async function editPost(postId, textEdit) {
   const db = getFirestore(app);
   const docRef = doc(db, 'posts', postId);
   await updateDoc(docRef, {
-    text: textEdit,
+    conteúdo: textEdit,
   });
 }
+
 // função para deletar o post
 export async function deletePost(postId) {
   console.log(postId);
