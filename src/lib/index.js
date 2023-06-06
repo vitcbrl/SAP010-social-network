@@ -53,10 +53,12 @@ export const loginUser = (email, password) => {
 };
 
 // Função para criar login com email e senha
-export const loginCreate = (email, password, name) => createUserWithEmailAndPassword(auth, email, password)
-  .then(() => updateProfile(auth.currentUser, {
-    displayName: name,
-  }));
+export const loginCreate = (email, password, name) =>
+  createUserWithEmailAndPassword(auth, email, password).then(() =>
+    updateProfile(auth.currentUser, {
+      displayName: name,
+    }),
+  );
 
 // função para manter o usuário logado
 export function userStateChanged(callback) {
@@ -70,4 +72,28 @@ export function userStateLogout() {
   signOut(auth)
     .then(() => {})
     .catch(() => {});
+}
+
+// função like
+export async function likePost(postId) {
+  const db = getFirestore(app);
+  const docRef = doc(db, 'posts', postId);
+  await updateDoc(docRef, {
+    like: increment(1),
+  });
+}
+
+// função editar o post
+export async function editPost(postId, textEdit) {
+  const db = getFirestore(app);
+  const docRef = doc(db, 'posts', postId);
+  await updateDoc(docRef, {
+    text: textEdit,
+  });
+}
+// função para deletar o post
+export async function deletePost(postId) {
+  console.log(postId);
+  const db = getFirestore(app);
+  await deleteDoc(doc(db, 'posts', postId));
 }
