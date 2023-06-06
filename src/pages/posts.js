@@ -50,7 +50,7 @@ export default () => {
       const post = {
         name: auth.currentUser.displayName,
         conteúdo: textPost,
-        like: [], //o like esta vindo para ca
+        like: [], // o like está vindo para cá
       };
 
       try {
@@ -73,18 +73,16 @@ export default () => {
         const postElement = document.createElement('div');
         postElement.className = 'content-post';
         postElement.innerHTML = `
-
-        <section class = "content">
-          <h3 class="contentTitle">${post.name}</h3>
-          <p class="contentParag">${post.conteúdo}</p>
-          <div class="button-content">
-          <button class="like-button" data-post-id="${post.id}">❤️</button>
-
-          <button class="edit-button" data-post-id="${post.id}">✏️</button>
-          <button class="delete-button" data-post-id="${post.id}">🗑️</button>
-          </div>
-          
-        </section>
+          <section class="content">
+            <h3 class="contentTitle">${post.name}</h3>
+            <p class="contentParag">${post.conteúdo}</p>
+            <div class="button-content">
+              <button class="like-button" data-post-id="${post.id}">❤️</button>
+              <span class="like-count">${post.like.length}</span>
+              <button class="edit-button" data-post-id="${post.id}">✏️</button>
+              <button class="delete-button" data-post-id="${post.id}">🗑️</button>
+            </div>
+          </section>
         `;
         postArea.appendChild(postElement);
 
@@ -92,23 +90,32 @@ export default () => {
         const editButton = postElement.querySelector('.edit-button');
         const deleteButton = postElement.querySelector('.delete-button');
 
-        likeButton.addEventListener('click', () => {
-          const postId = likeButton.getAttribute('data-post-id'); //ele ta puxando meu id no meu firebase.js
-          likePost(postId); // aqui estou puxando meu post id para funcionar na minha function
-        });
-
         editButton.addEventListener('click', () => {
           const postId = editButton.getAttribute('data-post-id');
-          const newText = prompt('Digite o novo texto:');
-          if (newText) {
-            editPost(postId, newText);
+          if (post.name === auth.currentUser.displayName) {
+            const newText = prompt('Digite o novo texto:');
+            if (newText) {
+              editPost(postId, newText);
+              postElement.querySelector('.contentParag').textContent = newText;
+            }
+          } else {
+            alert('Você só pode editar seus próprios posts.');
           }
         });
 
-        deleteButton.addEventListener('click', () => {
+        deleteButton.addEventListener('click', async () => {
           const postId = deleteButton.getAttribute('data-post-id');
-          if (confirm('Tem certeza de que deseja excluir este post?')) {
-            deletePost(postId);
+          if (post.name === auth.currentUser.displayName) {
+            if (confirm('Tem certeza de que deseja excluir este post?')) {
+              try {
+                await deletePost(postId);
+                postElement.remove();
+              } catch (error) {
+                console.log('Erro ao excluir o post:', error);
+              }
+            }
+          } else {
+            alert('Você só pode excluir seus próprios posts.');
           }
         });
       });

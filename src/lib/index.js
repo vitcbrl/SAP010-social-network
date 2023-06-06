@@ -97,3 +97,21 @@ export async function deletePost(postId) {
   const db = getFirestore(app);
   await deleteDoc(doc(db, 'posts', postId));
 }
+
+export const dislikePost = async (postId, userId) => {
+  try {
+    const postRef = db.collection('posts').doc(postId);
+    const postSnapshot = await postRef.get();
+
+    if (postSnapshot.exists) {
+      const postData = postSnapshot.data();
+      const updatedLikes = postData.likes.filter((id) => id !== userId);
+
+      await postRef.update({ likes: updatedLikes });
+    } else {
+      throw new Error('O post não existe.');
+    }
+  } catch (error) {
+    throw new Error('Erro ao remover o like do post: ' + error);
+  }
+};
