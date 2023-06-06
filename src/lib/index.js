@@ -9,6 +9,7 @@ import {
   GoogleAuthProvider,
   onAuthStateChanged,
   signOut,
+  updateProfile,
 } from 'firebase/auth';
 import {
   getFirestore,
@@ -52,9 +53,10 @@ export const loginUser = (email, password) => {
 };
 
 // Função para criar login com email e senha
-export const loginCreate = (email, password) => {
-  return createUserWithEmailAndPassword(auth, email, password);
-};
+export const loginCreate = (email, password, name) => createUserWithEmailAndPassword(auth, email, password)
+  .then(() => updateProfile(auth.currentUser, {
+    displayName: name,
+  }));
 
 // função para manter o usuário logado
 export function userStateChanged(callback) {

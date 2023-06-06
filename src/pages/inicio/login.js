@@ -53,12 +53,8 @@ export default () => {
   btnLogin.addEventListener('click', (e) => {
     e.preventDefault();
     if (validateEmail(email.value)) {
-      console.log(email.value);
-      console.log(password.value);
       loginUser(email.value, password.value)
         .then((userCredential) => {
-          const user = userCredential.user;
-          console.log(user);
           location.hash = '#posts';
         })
         .catch(() => {

@@ -38,29 +38,30 @@ export default () => {
 
   const btnLoginCreate = container.querySelector('#btn-entrar');
   const email = container.querySelector('#email');
+  const name = container.querySelector('#username');
   const password = container.querySelector('#senha');
 
   btnLoginCreate.addEventListener('click', (e) => {
     e.preventDefault();
     if (validateEmail(email.value)) {
-      console.log(email.value);
-      console.log(password.value);
-      loginCreate(email.value, password.value)
+      loginCreate(email.value, password.value, name.value)
         .then((userCredential) => {
-          const user = userCredential.user;
+          // const user = userCredential.user;
           alert('Seu cadastro foi finalizado. Clique em OK para postar!');
           location.hash = '#posts';
         })
         .catch((error) => {
           /* const errorCode = error.code;
         const errorMessage = error.message; */
-          alert(
-            'Ocorreu um erro ao criar o usuário. Por favor, tente novamente mais tarde.',
-          );
+          // alert(
+          //   'Ocorreu um erro ao criar o usuário. Por favor, tente novamente mais tarde.',
+          // );
+          alert('Por favor, insira seus dados.');
         });
-    } else {
-      alert('Por favor, insira um email válido.');
-    }
+    };
+    // else {
+    //   alert('Por favor, insira um email válido.');
+    // }
   });
 
   function validateEmail(email) {

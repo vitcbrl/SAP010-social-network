@@ -1,4 +1,4 @@
-import { addPost, db, getPosts } from '../firebase';
+import { addPost, db, getPosts, auth } from '../firebase';
 import { likePost, editPost, deletePost } from '../lib/index.js';
 import { userStateChanged, userStateLogout } from '../lib/index.js';
 
@@ -48,8 +48,9 @@ export default () => {
 
     if (textPost.trim() !== '') {
       const post = {
-        título: 'Meu primeiro post',
+        name: auth.currentUser.displayName,
         conteúdo: textPost,
+        like: [],
       };
 
       try {
@@ -72,11 +73,17 @@ export default () => {
         const postElement = document.createElement('div');
         postElement.className = "content-post";
         postElement.innerHTML = `
+
+          <h3>${post.name}</h3>
+          <p>${post.conteúdo}</p>
+          <button class="like-button" data-post-id="${post.id}">Like</button>
+
         <section class = "content">
           <h3 class="contentTitle">${post.título}</h3>
           <p class="contentParag">${post.conteúdo}</p>
           <div class="button-content">
           <button class="like-button" data-post-id="${post.id}">❤️</button>
+
           <button class="edit-button" data-post-id="${post.id}">Editar</button>
           <button class="delete-button" data-post-id="${post.id}">Excluir</button>
           </div>
