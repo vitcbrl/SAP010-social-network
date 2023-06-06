@@ -71,24 +71,3 @@ export function userStateLogout() {
     .then(() => {})
     .catch(() => {});
 }
-
-export async function likePost(postId) {
-  const db = getFirestore(app);
-  const docRef = doc(db, 'posts', postId);
-  await updateDoc(docRef, {
-    like: increment(1),
-  });
-}
-
-export async function editPost(postId, textEdit) {
-  const db = getFirestore(app);
-  const docRef = doc(db, 'posts', postId);
-  await updateDoc(docRef, {
-    conteúdo: textEdit,
-  });
-}
-
-export async function deletePost(postId) {
-  const db = getFirestore(app);
-  await deleteDoc(doc(db, 'posts', postId));
-}

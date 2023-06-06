@@ -251,5 +251,14 @@ footer{
 
 .button-content,  .like-button, .edit-button, .delete-button{
   padding: 5px;
+
+  font-size: 23px;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  font-family: 'Iceland', cursive;
 }
 
+.edit-button:hover, .delete-button:hover{
+  color: #504e4e;
+}
