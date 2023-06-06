@@ -80,8 +80,8 @@ export default () => {
           <div class="button-content">
           <button class="like-button" data-post-id="${post.id}">❤️</button>
 
-          <button class="edit-button" data-post-id="${post.id}">Editar</button>
-          <button class="delete-button" data-post-id="${post.id}">Excluir</button>
+          <button class="edit-button" data-post-id="${post.id}">✏️</button>
+          <button class="delete-button" data-post-id="${post.id}">🗑️</button>
           </div>
           
         </section>

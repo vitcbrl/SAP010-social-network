@@ -243,13 +243,13 @@ footer{
   border-radius: 1%;
 }
 
-.like-button{
-  font-size: 17px;
+.contentTitle{
+  color: black;
 }
+
+
 
 .button-content,  .like-button, .edit-button, .delete-button{
   padding: 5px;
-  
-  
 }
 
