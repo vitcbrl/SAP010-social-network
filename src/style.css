@@ -160,13 +160,14 @@ body{
 
 .Techsisters{
   margin-left: 1rem;
+  margin: auto;
 }
 
 .links{
   margin-right: 3rem;
 }
 
-.inicioA, .sobreA {
+.inicioA, .sobreA, .nova-nt {
   text-decoration: none;
   color: black;
   padding: 7px 20px;
@@ -184,6 +185,7 @@ body{
 }
 
 footer{
+  margin-top: 30px;
   color: white;
   text-align: center;
 }
@@ -243,7 +245,7 @@ footer{
   border-radius: 1%;
 }
 
-.contentTitle{
+.contentTitle  {
   color: black;
 }
 
@@ -261,4 +263,47 @@ footer{
 
 .edit-button:hover, .delete-button:hover{
   color: #504e4e;
+}
+
+/* PÁGINA SOBRE */
+
+.title-sobre{
+  color:  #60c063;
+  font-size: 2.5em;
+  text-align: center;
+  margin-bottom: 30px;
+  margin-top: 20px;
+}
+
+.sobre-tech{
+  color: white;
+  font-size: 1.3em;
+  text-align: justify;
+  margin: 10px 20px 30px 20px;
+
+}
+
+.foto{
+  float:left;
+  margin: 0 10px 10px;
+  height: 100px;
+  border-radius: 50%;
+
+
+}
+
+.p_sobre{
+  color: white;
+  font-size: 1.2em;
+  margin-top: 10px;
+}
+
+.sobre-lari, .sobre-vi, .sobre-raq{
+margin: auto;
+color:  #60c063;
+margin: 10px 20px 30px 20px;
+}
+
+.nova-nt{
+
 }
