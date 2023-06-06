@@ -79,8 +79,9 @@ export default () => {
           <div class="button-content">
           <button class="like-button" >❤️</button>
 
-          <button class="edit-button" >Editar</button>
-          <button class="delete-button" >Excluir</button>
+          <button class="edit-button" >✏️</button>
+          <button class="delete-button" >🗑️</button>
+
           </div>
           
         </section>
