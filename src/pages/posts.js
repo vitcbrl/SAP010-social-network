@@ -1,5 +1,4 @@
 import { addPost, db, getPosts, auth } from '../firebase';
-import { likePost, editPost, deletePost } from '../lib/index.js';
 import { userStateChanged, userStateLogout } from '../lib/index.js';
 
 export default () => {
@@ -71,46 +70,22 @@ export default () => {
       const posts = await getPosts(db);
       posts.forEach((post) => {
         const postElement = document.createElement('div');
-        postElement.className = "content-post";
+        postElement.className = 'content-post';
         postElement.innerHTML = `
 
         <section class = "content">
           <h3 class="contentTitle">${post.name}</h3>
           <p class="contentParag">${post.conteúdo}</p>
           <div class="button-content">
-          <button class="like-button" data-post-id="${post.id}">❤️</button>
+          <button class="like-button" >❤️</button>
 
-          <button class="edit-button" data-post-id="${post.id}">Editar</button>
-          <button class="delete-button" data-post-id="${post.id}">Excluir</button>
+          <button class="edit-button" >Editar</button>
+          <button class="delete-button" >Excluir</button>
           </div>
           
         </section>
         `;
         postArea.appendChild(postElement);
-
-        const likeButton = postElement.querySelector('.like-button');
-        const editButton = postElement.querySelector('.edit-button');
-        const deleteButton = postElement.querySelector('.delete-button');
-
-        likeButton.addEventListener('click', () => {
-          const postId = likeButton.getAttribute('data-post-id');
-          likePost(postId);
-        });
-
-        editButton.addEventListener('click', () => {
-          const postId = editButton.getAttribute('data-post-id');
-          const newText = prompt('Digite o novo texto:');
-          if (newText) {
-            editPost(postId, newText);
-          }
-        });
-
-        deleteButton.addEventListener('click', () => {
-          const postId = deleteButton.getAttribute('data-post-id');
-          if (confirm('Tem certeza de que deseja excluir este post?')) {
-            deletePost(postId);
-          }
-        });
       });
     } catch (error) {
       console.log('Erro ao obter os posts:', error);
