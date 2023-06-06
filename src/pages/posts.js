@@ -78,7 +78,7 @@ export default () => {
             <p class="contentParag">${post.conteúdo}</p>
             <div class="button-content">
               <button class="like-button" data-post-id="${post.id}">❤️</button>
-              <span class="like-count">${post.like.length}</span>
+              <span class="like-count">0</span>
               <button class="edit-button" data-post-id="${post.id}">✏️</button>
               <button class="delete-button" data-post-id="${post.id}">🗑️</button>
             </div>
@@ -89,6 +89,15 @@ export default () => {
         const likeButton = postElement.querySelector('.like-button');
         const editButton = postElement.querySelector('.edit-button');
         const deleteButton = postElement.querySelector('.delete-button');
+
+        likeButton.addEventListener('click', async () => {
+          const postId = likeButton.getAttribute('data-post-id');
+          await likePost(postId);
+          // Atualize o contador de curtidas no DOM
+          const likeCountElement = postElement.querySelector('.like-count');
+          likeCountElement.textContent =
+            parseInt(likeCountElement.textContent) + 1;
+        });
 
         editButton.addEventListener('click', () => {
           const postId = editButton.getAttribute('data-post-id');
