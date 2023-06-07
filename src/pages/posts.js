@@ -95,8 +95,15 @@ export default () => {
           await likePost(postId);
           // Atualize o contador de curtidas no DOM
           const likeCountElement = postElement.querySelector('.like-count');
-          likeCountElement.textContent =
-            parseInt(likeCountElement.textContent) + 1;
+          const currentLikeCount = parseInt(likeCountElement.textContent);
+
+          if (likeButton.classList.contains('liked')) {
+            likeCountElement.textContent = currentLikeCount - 1;
+            likeButton.classList.remove('liked');
+          } else {
+            likeCountElement.textContent = currentLikeCount + 1;
+            likeButton.classList.add('liked');
+          }
         });
 
         editButton.addEventListener('click', () => {
