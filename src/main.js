@@ -1,4 +1,4 @@
-// import { myFunction } from './lib/index.js';;
+// import { myFunction } from './lib/index.js';
 import sobre from './pages/sobre/sobre.js';
 import inicio from './pages/inicio/login.js';
 import registro from './pages/registro/registro.js';
