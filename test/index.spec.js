@@ -1,5 +1,5 @@
 import { loginUser } from '../src/lib/index';
-
+/* "TESTE EMAIL VALIDO" */
 describe('loginUser', () => {
   it('deve fazer o login com e-mail', async () => {
     const email = 'anateste@gmail.com';
