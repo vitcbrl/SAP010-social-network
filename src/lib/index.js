@@ -1,9 +1,6 @@
-import { auth, app } from '../firebase.js';
 import {
   signInWithEmailAndPassword,
   createUserWithEmailAndPassword,
-} from 'firebase/auth';
-import {
   getAuth,
   signInWithPopup,
   GoogleAuthProvider,
@@ -11,6 +8,7 @@ import {
   signOut,
   updateProfile,
 } from 'firebase/auth';
+
 import {
   getFirestore,
   doc,
@@ -21,56 +19,53 @@ import {
   getDocs,
   addDoc,
 } from 'firebase/firestore/lite';
+import { auth, app } from '../firebase.js';
 
 // Função para fazer login com o Google
 // Função para fazer login com o Google
 export const loginGoogle = () => {
+  // eslint-disable-next-line no-shadow
   const auth = getAuth();
   const provider = new GoogleAuthProvider();
 
   return signInWithPopup(auth, provider)
-    .then((result) => {
+    .then(() => {
       // This gives you a Google Access Token. You can use it to access the Google API.
-      const credential = GoogleAuthProvider.credentialFromResult(result);
-      const token = credential.accessToken;
       // The signed-in user info.
-      const user = result.user;
       // IdP data available using getAdditionalUserInfo(result)
       // ...
     })
     .catch((error) => {
-      // Handle Errors here.
       const errorCode = error.code;
-      const errorMessage = error.message;
+      // Handle Errors here.
       // The email of the user's account used.
-      const email = error.customData.email;
       // The AuthCredential type that was used.
-      const credential = GoogleAuthProvider.credentialFromError(error);
       // ...
+      // eslint-disable-next-line no-alert
+      alert(errorCode);
     });
 };
 
 // Função para fazer login com email e senha
-export const loginUser = (email, password) => {
-  return signInWithEmailAndPassword(auth, email, password); //importa dessa nova maneira que é o novo
-};
+// eslint-disable-next-line max-len
+export const loginUser = (email, password) => signInWithEmailAndPassword(auth, email, password); // importa dessa nova maneira que é o novo
 
 // Função para criar login com email e senha
-export const loginCreate = (email, password, name) =>
-  createUserWithEmailAndPassword(auth, email, password).then(() =>
-    updateProfile(auth.currentUser, {
-      displayName: name,
-    }),
-  );
+// eslint-disable-next-line max-len
+export const loginCreate = (email, password, name) => createUserWithEmailAndPassword(auth, email, password).then(() => updateProfile(auth.currentUser, {
+  displayName: name,
+}));
 
 // função para manter o usuário logado
 export function userStateChanged(callback) {
+  // eslint-disable-next-line no-shadow
   const auth = getAuth(app);
   onAuthStateChanged(auth, callback);
 }
 
 // função para deslogar o usuário
 export function userStateLogout() {
+  // eslint-disable-next-line no-shadow
   const auth = getAuth();
   signOut(auth)
     .then(() => {})
@@ -97,6 +92,7 @@ export async function editPost(postId, textEdit) {
 
 // função para deletar o post
 export async function deletePost(postId) {
+  // eslint-disable-next-line no-console
   console.log(postId);
   const db = getFirestore(app);
   await deleteDoc(doc(db, 'posts', postId));
@@ -104,6 +100,7 @@ export async function deletePost(postId) {
 
 export const dislikePost = async (postId, userId) => {
   try {
+    // eslint-disable-next-line no-undef
     const postRef = db.collection('posts').doc(postId);
     const postSnapshot = await postRef.get();
 
@@ -116,7 +113,7 @@ export const dislikePost = async (postId, userId) => {
       throw new Error('O post não existe.');
     }
   } catch (error) {
-    throw new Error('Erro ao remover o like do post: ' + error);
+    throw new Error(`Erro ao remover o like do post: ${error}`);
   }
 };
 
@@ -129,6 +126,7 @@ export async function addPost(db, post) {
 export async function getPosts(db) {
   const postsCol = collection(db, 'posts');
   const postsSnapshot = await getDocs(postsCol);
+  // eslint-disable-next-line no-shadow
   const postsList = postsSnapshot.docs.map((doc) => ({
     id: doc.id,
     ...doc.data(),

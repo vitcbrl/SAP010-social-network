@@ -1,8 +1,11 @@
-// importamos la funcion que vamos a testear
-import { myFunction } from '../src/lib/index';
+import { loginUser } from '../src/lib/index';
 
-describe('myFunction', () => {
-  it('debería ser una función', () => {
-    expect(typeof myFunction).toBe('function');
+describe('loginUser', () => {
+  it('deve fazer o login com e-mail', async () => {
+    const email = 'test@gmail.com';
+
+    const userCredential = await loginUser(email);
+
+    expect(userCredential.user.email).toBe(email);
   });
 });
