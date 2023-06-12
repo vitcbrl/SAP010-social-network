@@ -2,7 +2,7 @@
 import sobre from './pages/sobre/sobre.js';
 import inicio from './pages/inicio/login.js';
 import registro from './pages/registro/registro.js';
-import { getUsers, db } from './firebase.js';
+import { db, getPosts } from './firebase.js';
 import posts from './pages/posts.js';
 
 const main = document.querySelector('#root');
@@ -29,7 +29,7 @@ const init = () => {
 };
 
 window.addEventListener('load', () => {
-  getUsers(db).then((data) => console.log(data)); // A função getUsers é assíncrona e retorna uma Promise
+  getPosts(db).then((data) => console.log(data)); // A função getUsers é assíncrona e retorna uma Promise
   // main.appendChild(inicio());
   init();
 });
