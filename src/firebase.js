@@ -31,21 +31,11 @@ export const db = getFirestore(app);
 // Initialize Firebase Authentication and get a reference to the service
 export const auth = getAuth(app);
 
-// Get a list of cities from your database
-export async function getUsers(db) {
-  const usersCol = collection(db, 'users'); //pegar a minha coleçao de usuarios que é passado pelo meu db
-  const usersSnapshot = await getDocs(usersCol); //vai pegar todos os dados que estao dentro da coleção users
-  const usersList = usersSnapshot.docs.map((doc) => doc.data()); //mapeia esses dados e coloca dentro de um array, é um array de usuarios que é o retorno da function
-  return usersList;
-}
-
 // Adicione um post ao banco de dados
 export async function addPost(db, post) {
   const postsCol = collection(db, 'posts');
   await addDoc(postsCol, post);
 }
-
-export default getUsers;
 
 export async function getPosts(db) {
   const postsCol = collection(db, 'posts');
