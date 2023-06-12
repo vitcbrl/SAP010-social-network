@@ -2,7 +2,8 @@
 import sobre from './pages/sobre/sobre.js';
 import inicio from './pages/inicio/login.js';
 import registro from './pages/registro/registro.js';
-import { db, getPosts } from './firebase.js';
+import { db } from './firebase.js';
+import { getPosts } from './lib/index.js';
 import posts from './pages/posts.js';
 
 const main = document.querySelector('#root');

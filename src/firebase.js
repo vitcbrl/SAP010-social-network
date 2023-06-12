@@ -1,11 +1,6 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from 'firebase/app';
-import {
-  getFirestore,
-  collection,
-  getDocs,
-  addDoc,
-} from 'firebase/firestore/lite';
+import { getFirestore } from 'firebase/firestore/lite';
 import { getAuth } from 'firebase/auth';
 
 // Follow this pattern to import other Firebase services
@@ -30,19 +25,3 @@ export const app = initializeApp(firebaseConfig);
 export const db = getFirestore(app);
 // Initialize Firebase Authentication and get a reference to the service
 export const auth = getAuth(app);
-
-// Adicione um post ao banco de dados
-export async function addPost(db, post) {
-  const postsCol = collection(db, 'posts');
-  await addDoc(postsCol, post);
-}
-
-export async function getPosts(db) {
-  const postsCol = collection(db, 'posts');
-  const postsSnapshot = await getDocs(postsCol);
-  const postsList = postsSnapshot.docs.map((doc) => ({
-    id: doc.id,
-    ...doc.data(),
-  }));
-  return postsList;
-}
