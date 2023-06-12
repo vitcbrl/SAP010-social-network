@@ -1,5 +1,11 @@
-import { addPost, db, getPosts, auth } from '../firebase';
-import { likePost, editPost, deletePost } from '../lib/index.js';
+import { db, auth } from '../firebase';
+import {
+  likePost,
+  editPost,
+  deletePost,
+  getPosts,
+  addPost,
+} from '../lib/index.js';
 import { userStateChanged, userStateLogout } from '../lib/index.js';
 
 export default () => {

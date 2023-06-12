@@ -17,6 +17,9 @@ import {
   updateDoc,
   deleteDoc,
   increment,
+  collection,
+  getDocs,
+  addDoc,
 } from 'firebase/firestore/lite';
 
 // Função para fazer login com o Google
@@ -116,3 +119,19 @@ export const dislikePost = async (postId, userId) => {
     throw new Error('Erro ao remover o like do post: ' + error);
   }
 };
+
+// Adicione um post ao banco de dados
+export async function addPost(db, post) {
+  const postsCol = collection(db, 'posts');
+  await addDoc(postsCol, post);
+}
+
+export async function getPosts(db) {
+  const postsCol = collection(db, 'posts');
+  const postsSnapshot = await getDocs(postsCol);
+  const postsList = postsSnapshot.docs.map((doc) => ({
+    id: doc.id,
+    ...doc.data(),
+  }));
+  return postsList;
+}
