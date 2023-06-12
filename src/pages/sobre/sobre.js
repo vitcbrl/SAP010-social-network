@@ -1,8 +1,7 @@
 export default () => {
-    const container = document.createElement('div');
+  const container = document.createElement('div');
 
-
-    const template = `
+  const template = `
     <header class="geral">
       <h1 class="Techsisters">Techsisters</h1>
       <nav class="links">
@@ -40,11 +39,7 @@ Por isso, criamos um espaço seguro onde vocês podem compartilhar, se expressar
     </section>
 `;
 
+  container.innerHTML = template;
 
-    container.innerHTML = template;
-
-
-    return container;
-}
-
-
+  return container;
+};

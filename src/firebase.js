@@ -8,7 +8,7 @@ import { getAuth } from 'firebase/auth';
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
-//configuração do firebase to ligando ele ao meu vscode
+// configuração do firebase to ligando ele ao meu vscode
 
 // Your web app's Firebase configuration
 const firebaseConfig = {

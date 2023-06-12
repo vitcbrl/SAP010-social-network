@@ -43,28 +43,35 @@ export default () => {
 
   btnGoogle.addEventListener('click', (e) => {
     e.preventDefault();
+    // eslint-disable-next-line no-console
     console.log('google ok');
     loginGoogle()
       .then(() => {
+        // eslint-disable-next-line no-restricted-globals
         location.hash = '#posts';
       });
   });
 
   btnLogin.addEventListener('click', (e) => {
     e.preventDefault();
+    // eslint-disable-next-line no-use-before-define
     if (validateEmail(email.value)) {
       loginUser(email.value, password.value)
-        .then((userCredential) => {
+        .then(() => {
+          // eslint-disable-next-line no-restricted-globals
           location.hash = '#posts';
         })
         .catch(() => {
+          // eslint-disable-next-line no-alert
           alert('Email ou senha inválidos');
         });
     } else {
+      // eslint-disable-next-line no-alert
       alert('Por favor, insira um email válido');
     }
   });
 
+  // eslint-disable-next-line no-shadow
   function validateEmail(email) {
     const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     return regex.test(email);
