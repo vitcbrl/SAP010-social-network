@@ -48,13 +48,17 @@ export const loginGoogle = () => {
 
 // Função para fazer login com email e senha
 // eslint-disable-next-line max-len
-export const loginUser = (email, password) => signInWithEmailAndPassword(auth, email, password); // importa dessa nova maneira que é o novo
+export const loginUser = (email, password) =>
+  signInWithEmailAndPassword(auth, email, password); // importa dessa nova maneira que é o novo
 
 // Função para criar login com email e senha
 // eslint-disable-next-line max-len
-export const loginCreate = (email, password, name) => createUserWithEmailAndPassword(auth, email, password).then(() => updateProfile(auth.currentUser, {
-  displayName: name,
-}));
+export const loginCreate = (email, password, name) =>
+  createUserWithEmailAndPassword(auth, email, password).then(() =>
+    updateProfile(auth.currentUser, {
+      displayName: name,
+    }),
+  );
 
 // função para manter o usuário logado
 export function userStateChanged(callback) {
@@ -97,25 +101,6 @@ export async function deletePost(postId) {
   const db = getFirestore(app);
   await deleteDoc(doc(db, 'posts', postId));
 }
-
-export const dislikePost = async (postId, userId) => {
-  try {
-    // eslint-disable-next-line no-undef
-    const postRef = db.collection('posts').doc(postId);
-    const postSnapshot = await postRef.get();
-
-    if (postSnapshot.exists) {
-      const postData = postSnapshot.data();
-      const updatedLikes = postData.likes.filter((id) => id !== userId);
-
-      await postRef.update({ likes: updatedLikes });
-    } else {
-      throw new Error('O post não existe.');
-    }
-  } catch (error) {
-    throw new Error(`Erro ao remover o like do post: ${error}`);
-  }
-};
 
 // Adicione um post ao banco de dados
 export async function addPost(db, post) {
