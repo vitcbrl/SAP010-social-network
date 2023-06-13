@@ -2,10 +2,11 @@ import {
   signInWithPopup,
   signInWithEmailAndPassword,
   auth,
+  onAuthStateChanged,
 } from 'firebase/auth';
 import { getFirestore, doc, updateDoc } from 'firebase/firestore';
 
-import { loginUser, loginGoogle } from '../src/lib/index';
+import { loginUser, loginGoogle, userStateChanged } from '../src/lib/index';
 
 jest.mock('firebase/auth');
 jest.mock('firebase/firestore');
@@ -34,6 +35,13 @@ describe('loginGoogle', () => {
     signInWithPopup.mockResolvedValueOnce();
     await loginGoogle();
     expect(signInWithPopup).toHaveBeenCalledTimes(1);
+  });
+});
+
+describe('userStateChanged', () => {
+  it('a função deve manter o usuário logado', () => {
+    userStateChanged();
+    expect(onAuthStateChanged).toHaveBeenCalledTimes(1);
   });
 });
 
