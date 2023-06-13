@@ -48,17 +48,13 @@ export const loginGoogle = () => {
 
 // Função para fazer login com email e senha
 // eslint-disable-next-line max-len
-export const loginUser = (email, password) =>
-  signInWithEmailAndPassword(auth, email, password); // importa dessa nova maneira que é o novo
+export const loginUser = (email, password) => signInWithEmailAndPassword(auth, email, password); // importa dessa nova maneira que é o novo
 
 // Função para criar login com email e senha
 // eslint-disable-next-line max-len
-export const loginCreate = (email, password, name) =>
-  createUserWithEmailAndPassword(auth, email, password).then(() =>
-    updateProfile(auth.currentUser, {
-      displayName: name,
-    }),
-  );
+export const loginCreate = (email, password, name) => createUserWithEmailAndPassword(auth, email, password).then(() => updateProfile(auth.currentUser, {
+  displayName: name,
+}));
 
 // função para manter o usuário logado
 export function userStateChanged(callback) {
