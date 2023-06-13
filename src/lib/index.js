@@ -86,7 +86,7 @@ export async function editPost(postId, textEdit) {
   const db = getFirestore(app);
   const docRef = doc(db, 'posts', postId);
   await updateDoc(docRef, {
-    conteúdo: textEdit,
+    content: textEdit,
   });
 }
 
