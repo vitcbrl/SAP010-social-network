@@ -62,17 +62,14 @@ export default () => {
           // eslint-disable-next-line no-alert
           alert('Por favor, insira seus dados.');
         });
+    } else {
+      alert('Por favor, insira um email válido.');
     }
-    // else {
-    //   alert('Por favor, insira um email válido.');
-    // }
   });
-
   // eslint-disable-next-line no-shadow
   function validateEmail(email) {
     const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     return regex.test(email);
   }
-
   return container;
 };
