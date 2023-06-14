@@ -65,11 +65,8 @@ export function userStateChanged(callback) {
 
 // função para deslogar o usuário
 export function userStateLogout() {
-  // eslint-disable-next-line no-shadow
-  const auth = getAuth();
-  signOut(auth)
-    .then(() => {})
-    .catch(() => {});
+  const authLogout = getAuth();
+  signOut(authLogout);
 }
 
 // função like

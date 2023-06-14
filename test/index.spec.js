@@ -3,10 +3,17 @@ import {
   signInWithEmailAndPassword,
   auth,
   onAuthStateChanged,
+  getAuth,
+  signOut,
 } from 'firebase/auth';
 import { getFirestore, doc, updateDoc } from 'firebase/firestore';
 
-import { loginUser, loginGoogle, userStateChanged } from '../src/lib/index';
+import {
+  loginUser,
+  loginGoogle,
+  userStateChanged,
+  userStateLogout,
+} from '../src/lib/index';
 
 jest.mock('firebase/auth');
 jest.mock('firebase/firestore');
@@ -55,5 +62,16 @@ describe('editPost', () => {
 
     await expect(updateDoc(docRef, textEdit)).resolves.toBeUndefined();
     expect(updateDoc).toHaveBeenCalledWith(docRef, textEdit);
+  });
+});
+
+describe('userStateLogout', () => {
+  it('deve chamar a função signOut corretamente', () => {
+    const authMock = {};
+    getAuth.mockReturnValueOnce(authMock);
+
+    userStateLogout();
+
+    expect(signOut).toHaveBeenCalledWith(authMock);
   });
 });
