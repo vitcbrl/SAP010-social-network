@@ -1,15 +1,39 @@
 import {
   signInWithPopup,
   signInWithEmailAndPassword,
+  createUserWithEmailAndPassword,
   auth,
   onAuthStateChanged,
+  updateProfile,
 } from 'firebase/auth';
 import { getFirestore, doc, updateDoc } from 'firebase/firestore';
 
-import { loginUser, loginGoogle, userStateChanged } from '../src/lib/index';
+import {
+  loginUser, loginGoogle, loginCreate, userStateChanged,
+} from '../src/lib/index';
 
 jest.mock('firebase/auth');
 jest.mock('firebase/firestore');
+
+describe('createUser', () => {
+  it('deve criar um usuário', async () => {
+    const user = {
+      name: 'teste',
+      email: 'teste@gmail.com',
+      password: '12345',
+    };
+
+    createUserWithEmailAndPassword.mockResolvedValue({ user });
+    // createUserWithEmailAndPassword.mockResolvedValueOnce();
+    await loginCreate(user.name, user.email, user.password);
+    // eslint-disable-next-line jest/valid-expect, max-len
+    expect(createUserWithEmailAndPassword).toHaveBeenCalledWith(auth, user.email, user.password);
+    // eslint-disable-next-line no-undef
+    expect(updateProfile).toHaveBeenCalledWith(user, {
+      displayName: user.name,
+    });
+  });
+});
 
 /* 'TESTE EMAIL VALIDO' */
 describe('loginUser', () => {

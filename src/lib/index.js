@@ -52,9 +52,10 @@ export const loginUser = (email, password) => signInWithEmailAndPassword(auth, e
 
 // Função para criar login com email e senha
 // eslint-disable-next-line max-len
-export const loginCreate = (email, password, name) => createUserWithEmailAndPassword(auth, email, password).then(() => updateProfile(auth.currentUser, {
-  displayName: name,
-}));
+export const loginCreate = (name, email, password) => createUserWithEmailAndPassword(auth, email, password).then((userCredential) => {
+  const user = userCredential.user;
+  updateProfile(user, { displayName: name });
+});
 
 // função para manter o usuário logado
 export function userStateChanged(callback) {

@@ -45,7 +45,7 @@ export default () => {
     e.preventDefault();
     // eslint-disable-next-line no-use-before-define
     if (validateEmail(email.value)) {
-      loginCreate(email.value, password.value, name.value)
+      loginCreate(name.value, email.value, password.value)
         .then(() => {
           // const user = userCredential.user;
           // eslint-disable-next-line no-alert
@@ -63,6 +63,7 @@ export default () => {
           alert('Por favor, insira seus dados.');
         });
     } else {
+      // eslint-disable-next-line no-alert
       alert('Por favor, insira um email válido.');
     }
   });
