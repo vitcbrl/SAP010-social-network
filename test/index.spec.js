@@ -27,10 +27,6 @@ describe('loginUser', () => {
 });
 
 describe('loginGoogle', () => {
-  it('deveria ser uma função', () => {
-    expect(typeof loginGoogle).toBe('function');
-  });
-
   it('Deveria logar o usuário com a conta do google', async () => {
     signInWithPopup.mockResolvedValueOnce();
     await loginGoogle();
