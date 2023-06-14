@@ -5,11 +5,13 @@ import {
   auth,
   onAuthStateChanged,
   updateProfile,
+  getAuth,
+  signOut,
 } from 'firebase/auth';
 import { getFirestore, doc, updateDoc } from 'firebase/firestore';
 
 import {
-  loginUser, loginGoogle, loginCreate, userStateChanged,
+  loginUser, loginGoogle, loginCreate, userStateChanged, userStateLogout,
 } from '../src/lib/index';
 
 jest.mock('firebase/auth');
