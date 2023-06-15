@@ -8,6 +8,7 @@ export default () => {
     <div class="create">
       <div class="title">
         <h1 class="title-logo">Techsisters</h1>
+        <div class='linha'></div>
           <div class="logo">
             <img src="./img/img-inicio.png" alt="Logo">     
           </div>
@@ -17,7 +18,7 @@ export default () => {
     <div class="inicio">
       <div class="container">
         <h1 class="descricao-entrar">ENTRAR</h1>
-        <button class="link-google" id="btn-google"><i class="fab fa-google"></i> Entrar com o Google</button>
+        <button class="link-google" id="btn-google"><ion-icon name="logo-google"></ion-icon><p class='entrar-google'>Entrar com o Google<p></button>
         <form class="login">
           <label class='label' for="email">E-mail</label>
           <input type="email" class="email-login" id="email" name="email" placeholder="user@gmail.com" required/>
