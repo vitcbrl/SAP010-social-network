@@ -79,6 +79,16 @@ body{
   background-color: #60c063;
 }
 
+.entrar-google{
+  font-size: 18px;
+  margin: -25px 0px 0px 30px;
+}
+
+ion-icon{
+  margin: -10px 150px 0px 0;
+  font-size: 25px;
+}
+
 .login{
   margin-top: 25px;
   height: 300px;
@@ -181,7 +191,7 @@ body{
 }
 
 footer{
-  margin-top: 30px;
+  /* margin-top: px; */
   color: white;
   text-align: center;
 }
@@ -204,15 +214,7 @@ footer{
   display: flex;
   justify-content: center;
   margin-bottom: 30px;
-  
-  
 }
-
-/* .feed-container{
-  display: block;
-  justify-content: center;
-  align-items: center;
-} */
 
 .feed-text-box{
   width: 50%;
@@ -244,8 +246,6 @@ footer{
 .contentTitle  {
   color: black;
 }
-
-
 
 .button-content,  .like-button, .edit-button, .delete-button{
   padding: 5px;
@@ -284,8 +284,6 @@ footer{
   margin: 0 10px 10px;
   height: 100px;
   border-radius: 50%;
-
-
 }
 
 .p_sobre{
@@ -297,4 +295,71 @@ footer{
 .sobre-lari, .sobre-vi, .sobre-raq{
 color:  #60c063;
 margin: 10px 20px 30px 20px;
+}
+
+@media screen and (max-width: 480px){
+  .logo{
+    display: none;
+  }
+
+  .linha{
+    width: 100%;
+    height: 10px;
+    background: white;
+    margin-top: 20px;
+  }
+
+  .title-logo{
+    font-size: 60px;
+  }
+
+  .content{
+    display: flex;
+    flex-direction: column;
+  }
+
+  .inicio{
+    width: 100%;
+  }
+
+  .create{
+    width: 100%;
+  }
+
+  .descricao-entrar{
+    font-size: 30px;
+    margin-top: 20px;
+  }
+
+  .link-google{
+    margin-left: 2rem;
+  }
+
+  .label{
+    font-size: 30px;
+  }
+
+  .senha-login, .email-login{
+    width: 250px;
+    height: 35px;
+  }
+
+  .btn-entrar{
+    font-weight: 100;
+    width: 260px;
+    height: 45px;
+  }
+
+  .or{
+    margin-top: 10px;
+    margin-left: 175px;
+  }
+
+  .nova-conta{
+    margin-left: 120px;
+  }
+
+  footer{
+    font-size: 13px;
+  }
 }
