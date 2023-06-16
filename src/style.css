@@ -120,8 +120,8 @@ ion-icon{
 }
 
 .container{
-  width: 300px;
-  height: 350px;
+  width: 290px;
+  height: 360px;
   margin: 10px 60px;
 }
 
@@ -191,7 +191,6 @@ ion-icon{
 }
 
 footer{
-  /* margin-top: px; */
   color: white;
   text-align: center;
 }
@@ -213,16 +212,24 @@ footer{
 .feed-novo-post{
   display: flex;
   justify-content: center;
-  margin-bottom: 30px;
+  margin: 30px;
 }
 
 .feed-text-box{
-  width: 50%;
+  width: 51%;
   height: 100%;
+  background-color: rgba(255, 255, 255, 0.19);
+  border: none;
+  outline: none;
+}
+
+.feed-text-box::placeholder{
+  color: #60c063;
+  padding: 5px;
 }
 
 .contentTitle, .contentParag{
-  color: white;
+  color: rgb(235, 228, 228);
   font-size: 1.5rem;
 }
 
@@ -239,17 +246,21 @@ footer{
   margin-bottom: 20px;
   width: 53.2%;
   height: 100%;
-  background-color: #60c063;
-  border-radius: 1%;
+  border-radius: 20px;
+}
+
+#post-button{
+  background: #60c063;
+  border: none;
+  width: 70px;
 }
 
 .contentTitle  {
-  color: black;
+  color: black
 }
 
 .button-content,  .like-button, .edit-button, .delete-button{
   padding: 5px;
-
   font-size: 23px;
   background-color: transparent;
   border: none;
@@ -297,6 +308,10 @@ color:  #60c063;
 margin: 10px 20px 30px 20px;
 }
 
+.text-menor{
+  display: none;
+}
+
 @media screen and (max-width: 480px){
   .logo{
     display: none;
@@ -339,7 +354,7 @@ margin: 10px 20px 30px 20px;
     font-size: 30px;
   }
 
-  .senha-login, .email-login{
+  .senha-login, .email-login, #username{
     width: 250px;
     height: 35px;
   }
@@ -359,34 +374,51 @@ margin: 10px 20px 30px 20px;
     margin-left: 120px;
   }
 
+  .foto{
+    max-width: 100px;
+    max-height: 50px;
+  }
+
+  .Techsisters{
+    font-size: 30px;
+  }
+
+  .title-sobre{
+    font-size: 20px;
+  }
+
+  .nova-nt, .inicioA, .sobreA{
+    padding: 10px;
+    font-size: 15px;
+  }
+
+  .sobre-tech{
+    font-size: 17px;
+  }
+
+  .sobre-raq, .sobre-lari, .sobre-vi{
+    font-size: 11px;
+  }
+
   footer{
+    position: relative;
+    bottom: 0;
     font-size: 13px;
   }
 }
 
 @media screen and (max-width: 1400px) {
+  footer{
+    margin-top: 20%;
+    color: white;
+    text-align: center; 
+  }
 
-
-footer{
-  margin-top: 20%;
-  color: white;
-  text-align: center; 
-}
-
-.p_sobre{
-  color: white;
-  font-size: 1.5em;
-  margin: 0px 100px 100px 100px;
-  text-align: left;
-}
-
-
-.foto{
-  float:left;
-  margin: 40px 25px 40px 30px;
-  height: 15vh;
-  border-radius: 50%;
-  padding: 10px;
-}
+  .p_sobre{
+    color: white;
+    font-size: 1.5em;
+    margin: 0px 2px 20px 2px;
+    text-align: justify;
+  }
 
 }
