@@ -8,6 +8,7 @@ export default () => {
     <div class="create">
       <div class="title">
         <h1 class="title-logo">Techsisters</h1>
+        <div class='linha'></div>
           <div class="logo">
             <img src="./img/img-inicio.png" alt="Logo">     
           </div>

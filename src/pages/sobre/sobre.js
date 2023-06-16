@@ -14,8 +14,8 @@ export default () => {
     <br>
 Por isso, criamos um espaço seguro onde vocês podem compartilhar, se expressar e se conectar com outras mulheres apaixonadas por tecnologia. Nossa plataforma é um refúgio virtual acolhedor e inclusivo. Sabemos que encontrar um ambiente seguro para compartilhar suas experiências e conhecimentos na área de tecnologia pode ser desafiador. Aqui, queremos que vocês se sintam confiantes ao postar e participar de conversas significativas.</p>
     <section class="sobre-dev">
+    <h1 class="title-sobre">Conheça as mulheres que Desenvolveram a Techsisters:</h1>
         <div class="sobre-raq">
-            <h1 class="title-sobre">Conheça as mulheres que Desenvolveram a Techsisters:</h1>
             <img src="img/img-raq.png" alt="Raquel Maia" class="foto"/>
             <h2 class="h2_sobre">Raquel Maia</h2>
             <p class="p_sobre">
