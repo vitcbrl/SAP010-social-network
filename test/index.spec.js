@@ -121,15 +121,20 @@ describe('deletePost', () => {
 
 describe('addPost', () => {
   it('deve adicionar o post no banco de dados', async () => {
-    // Arrange
-    const db = {}; // Defina o objeto db necessário para o teste
-    const post = {}; // Defina o objeto post necessário para o teste
+    // Arrange - Preparação dos dados necessários para o teste
+    const db = {}; // Cria um objeto vazio que representa o banco de dados
+    const post = {}; // Cria um objeto vazio que representa o post a ser adicionado
+
+    // Mock do addDoc para simular a resolução bem-sucedida da adição do post
     addDoc.mockResolvedValueOnce();
 
-    // Act
+    // Act - Execução da função que está sendo testada
     await addPost(db, post);
+    // Chama a função addPost passando o banco de dados (db)
+    /* e o post como argumentos */
 
-    // Assert
+    // Assert - Verificação do resultado do teste
     expect(addDoc).toHaveBeenCalledTimes(1);
+    // Verifica se a função addDoc foi chamada exatamente uma vez durante a execução de addPost
   });
 });

@@ -97,9 +97,12 @@ export async function deletePost(postId) {
 }
 
 // Adicione um post ao banco de dados
+// Função addPost: Adiciona um post no banco de dados
 export async function addPost(db, post) {
-  const postsCol = collection(db, 'posts');
-  await addDoc(postsCol, post);
+  // db representa o objeto do banco de dados
+  // post representa o objeto do post a ser adicionado
+  const postsCol = collection(db, 'posts'); // Referência à coleção 'posts' no banco de dados
+  await addDoc(postsCol, post); // Adiciona o documento (post) à coleção 'posts'
 }
 
 export async function getPosts(db) {
