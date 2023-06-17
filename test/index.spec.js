@@ -8,14 +8,27 @@ import {
   getAuth,
   signOut,
 } from 'firebase/auth';
-import { getFirestore, doc, updateDoc } from 'firebase/firestore';
 
 import {
-  loginUser, loginGoogle, loginCreate, userStateChanged, userStateLogout,
+  deleteDoc,
+  getFirestore,
+  doc,
+  updateDoc,
+  addDoc,
+} from 'firebase/firestore/lite';
+
+import {
+  loginUser,
+  loginGoogle,
+  loginCreate,
+  userStateChanged,
+  userStateLogout,
+  deletePost,
+  addPost,
 } from '../src/lib/index';
 
 jest.mock('firebase/auth');
-jest.mock('firebase/firestore');
+jest.mock('firebase/firestore/lite');
 
 describe('createUser', () => {
   it('deve criar um usuário', async () => {
@@ -92,5 +105,31 @@ describe('userStateLogout', () => {
     userStateLogout();
 
     expect(signOut).toHaveBeenCalledWith(authMock);
+  });
+});
+
+describe('deletePost', () => {
+  it('deve deletar o post no banco de dados', async () => {
+    const postId = 'postId';
+    deleteDoc.mockResolvedValueOnce();
+
+    await deletePost(postId);
+
+    expect(deleteDoc).toHaveBeenCalledTimes(1);
+  });
+});
+
+describe('addPost', () => {
+  it('deve adicionar o post no banco de dados', async () => {
+    // Arrange
+    const db = {}; // Defina o objeto db necessário para o teste
+    const post = {}; // Defina o objeto post necessário para o teste
+    addDoc.mockResolvedValueOnce();
+
+    // Act
+    await addPost(db, post);
+
+    // Assert
+    expect(addDoc).toHaveBeenCalledTimes(1);
   });
 });
