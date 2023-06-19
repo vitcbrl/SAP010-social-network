@@ -15,6 +15,7 @@ import {
   doc,
   updateDoc,
   addDoc,
+  increment,
 } from 'firebase/firestore/lite';
 
 import {
@@ -25,6 +26,7 @@ import {
   userStateLogout,
   deletePost,
   addPost,
+  likePost,
 } from '../src/lib/index';
 
 jest.mock('firebase/auth');
@@ -131,5 +133,21 @@ describe('addPost', () => {
 
     // Assert
     expect(addDoc).toHaveBeenCalledTimes(1);
+  });
+});
+
+describe('likePost', () => {
+  it('deve incrementar o contador de likes no banco de dados', async () => {
+    const postId = 'postId';
+    const db = getFirestore();
+    const docRef = doc(db, 'posts', postId);
+    const updateDocMock = jest.fn();
+    updateDoc.mockImplementation(updateDocMock);
+
+    await likePost(postId);
+
+    expect(updateDocMock).toHaveBeenCalledWith(docRef, {
+      like: increment(1),
+    });
   });
 });
