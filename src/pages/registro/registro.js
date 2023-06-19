@@ -44,31 +44,20 @@ export default () => {
 
   btnLoginCreate.addEventListener('click', (e) => {
     e.preventDefault();
-    // eslint-disable-next-line no-use-before-define
     if (validateEmail(email.value)) {
       loginCreate(name.value, email.value, password.value)
         .then(() => {
-          // const user = userCredential.user;
-          // eslint-disable-next-line no-alert
           alert('Seu cadastro foi finalizado. Clique em OK para postar!');
-          // eslint-disable-next-line no-restricted-globals
           location.hash = '#posts';
         })
         .catch(() => {
-          /* const errorCode = error.code;
-        const errorMessage = error.message; */
-          // alert(
-          //   'Ocorreu um erro ao criar o usuário. Por favor, tente novamente mais tarde.',
-          // );
-          // eslint-disable-next-line no-alert
           alert('Por favor, insira seus dados.');
         });
     } else {
-      // eslint-disable-next-line no-alert
       alert('Por favor, insira um email válido.');
     }
   });
-  // eslint-disable-next-line no-shadow
+
   function validateEmail(email) {
     const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     return regex.test(email);
