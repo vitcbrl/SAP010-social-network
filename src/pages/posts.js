@@ -39,15 +39,11 @@ export default () => {
 
   btnSair.addEventListener('click', async () => {
     try {
-      // eslint-disable-next-line no-console
       console.log('Deslogou');
       await userStateLogout(userStateChanged);
-      // redirecionar o usuário para outra página
       window.location.href = '#login';
     } catch (error) {
-      // eslint-disable-next-line no-console
       console.log('Erro ao fazer logout:', error);
-      // Lógica para lidar com erros no logout
     }
   });
 
@@ -58,18 +54,15 @@ export default () => {
       const post = {
         name: auth.currentUser.displayName,
         conteúdo: textPost,
-        like: [], // o like está vindo para cá
+        like: [],
       };
 
       try {
         await addPost(db, post);
-        // eslint-disable-next-line no-alert
         alert('Post adicionado com sucesso');
         document.getElementById('text-post').value = '';
-        // eslint-disable-next-line no-use-before-define
         await displayPosts();
       } catch (error) {
-        // eslint-disable-next-line no-alert
         alert(`Erro ao adicionar o post: ${error}`);
       }
     }
@@ -104,9 +97,7 @@ export default () => {
         likeButton.addEventListener('click', async () => {
           const postId = likeButton.getAttribute('data-post-id');
           await likePost(postId);
-          // Atualize o contador de curtidas no DOM
           const likeCountElement = postElement.querySelector('.like-count');
-          // eslint-disable-next-line radix
           const currentLikeCount = parseInt(likeCountElement.textContent);
 
           if (likeButton.classList.contains('liked')) {
@@ -121,14 +112,12 @@ export default () => {
         editButton.addEventListener('click', () => {
           const postId = editButton.getAttribute('data-post-id');
           if (post.name === auth.currentUser.displayName) {
-            // eslint-disable-next-line no-alert
             const newText = prompt('Digite o novo texto:');
             if (newText) {
               editPost(postId, newText);
               postElement.querySelector('.contentParag').textContent = newText;
             }
           } else {
-            // eslint-disable-next-line no-alert
             alert('Você só pode editar seus próprios posts.');
           }
         });
@@ -136,29 +125,24 @@ export default () => {
         deleteButton.addEventListener('click', async () => {
           const postId = deleteButton.getAttribute('data-post-id');
           if (post.name === auth.currentUser.displayName) {
-            // eslint-disable-next-line no-restricted-globals, no-alert
             if (confirm('Tem certeza de que deseja excluir este post?')) {
               try {
                 await deletePost(postId);
                 postElement.remove();
               } catch (error) {
-                // eslint-disable-next-line no-console
                 console.log('Erro ao excluir o post:', error);
               }
             }
           } else {
-            // eslint-disable-next-line no-alert
             alert('Você só pode excluir seus próprios posts.');
           }
         });
       });
     } catch (error) {
-      // eslint-disable-next-line no-console
       console.log('Erro ao obter os posts:', error);
     }
   }
 
-  // Exibir os posts ao carregar a página
   displayPosts();
 
   return container;
