@@ -69,8 +69,8 @@ Finalizamos a pesquisa com uma aceitação de 100% em relação à criação de 
 - O código tem, e passa, os testes necessários.
 - A página de login estava responsiva para todas as telas
 - Finalizou-se a SPA (Single Page Application)
-- A história implementada foi testada com, pelo menos 3 usuários (esse nao foi feito com outras pessoas)
-- Realizou-se o deploy utilizando o git tag. (fazer ainda)
+- A história implementada foi testada com, pelo menos 3 usuários 
+- Realizou-se o deploy utilizando o git tag. 
 
 ### História de usuário 2:
 
@@ -87,19 +87,22 @@ Finalizamos a pesquisa com uma aceitação de 100% em relação à criação de 
 - O código tem, e passa, os testes necessários.
 - A página de login estava responsiva para todas as telas
 - Finalizou-se a SPA (Single Page Application)
-- A história implementada foi testada com, pelo menos 3 usuários (esse nao foi feito com outras pessoas)
-- Realizou-se o deploy utilizando o git tag. (fazer ainda)
+- A história implementada foi testada com, pelo menos 3 usuários
 
 ### História de usuário 3:
 
 > "Como usuário registrado, ao entrar na página de posts da Techsisters, fiquei impressionado com as publicações inspiradoras das mulheres na comunidade. Decidi compartilhar minhas próprias experiências e interagir com outras usuárias, aprendendo com elas e contribuindo com meus conhecimentos. É importante para mim poder postar conteúdos relevantes e ter controle total sobre minhas publicações, incluindo a opção de excluir meus próprios posts, com uma confirmação prévia. Também gostaria de poder ver e dar likes nas publicações das outras mulheres na plataforma. Ter a exclusividade de excluir meus próprios posts é fundamental para manter a segurança e responsabilidade no ambiente da comunidade Techsisters."
 
 #### Critério de aceitação:
+- Página de feed
+- Fazer uma publicação no feed
+- Editar uma publicação no feed
+- Excluir uma publicação no feed
 
 #### Definição de pronto:
 - O código guarda o post no Firebase;
 - A página de posts estava responsiva para todas as tela
-- A história implementada foi testada com, pelo menos 3 usuários (esse nao foi feito com outras pessoas)
+- A história implementada foi testada com, pelo menos 3 usuários 
 - Construiu-se o teste das funções de like, editar e excluir post
 
 ### História do usuário 4
