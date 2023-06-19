@@ -7,12 +7,22 @@
 * [3. Pesquisas de usuário](#3-pesquisas-de-usuário)
 * [4. História de usuário](#4-história-de-usuário)
 * [5. Desenho da Interface de Usuário](#6-desenho-da-interface-de-usuário)
+* [6. Considerações Técnicas](#4-considerações-tecnicas)
+* [7. Ferramentas utilizadas](#4-ferramentas-utilizadas)
+* [8. Sobre as desenvolvedoras](#4-sobre-desenvolvedoras)
 
 ***
 
 ## 1. Resumo do projeto
 
+Techsisters é uma plataforma de rede social exclusiva para mulheres apaixonadas por tecnologia. Desenvolvida como parte do bootcamp da Laboratoria, nosso projeto Social Network oferece recursos como criação de conta, login, publicação e interação.
 
+Utilizamos JavaScript e técnicas de múltiplas telas para criar uma experiência interativa. Aprendemos sobre autenticação com Firebase Auth, persistência de dados com Firestore e implementação de rotas.
+
+Inspiradas por essa experiência, criamos a Techsisters como um ambiente seguro para mulheres se conectarem, compartilharem conhecimentos e apoiarem umas às outras. Nosso foco é aprimorar habilidades técnicas e proporcionar uma experiência agradável.
+Junte-se à comunidade Techsisters, uma plataforma exclusiva para mulheres apaixonadas por tecnologia. Vamos aprender juntas e promover uma comunidade colaborativa e diversa.
+
+Venha participar dessa jornada de conexão e crescimento!
 
 ## 2. Definição de produto
 
@@ -119,72 +129,29 @@ Finalizamos a pesquisa com uma aceitação de 100% em relação à criação de 
 
 - PÁGINA DE POSTS
 
-![image](./src/img/baixa-fidelidade.jpeg)
+![image](./src/img/alta-fidelidade.jpeg)
 
-## 7. Entrega
+## 6. Considerações Técnicas
 
-O projeto será entregue subindo seu código no GitHub (`commit` /`push`) e a
-interface será exibida usando páginas do GitHub ou outro serviço de hospedagem
-(Firebase, Netlify, Vercel, etc) que você pode ter encontrado pelo caminho.
-Verifica a [Documentação Vite](https://vitejs.dev/guide/static-deploy.html)
-para orientá-lo sobre isso.
+O projeto foi desenvolvido somente em JavaScript (ES6), HTML e CSS. Ademais, não foi permitido o uso de bibliotecas e frameworks, apenas vanilla JavaScript, com exceção da biblioteca Firebase para gestão de usuário e base de dados.
 
-***
+## 7. Ferramentas utilizadas
 
-Participe do canal do Slack
-[#project-social-network](https://claseslaboratoria.slack.com/archives/C03SE63GFJQ)
-para conversar e pedir ajuda no projeto.
+- Figma;
+- Trello;
+- Vite,
+- Firebase,
+- Git;
+- GitHub;
+- Jest;
+- Node.js;
+- HTML5;
+- CSS3;
+- JavaScript;
+- Visual Studio Code;
 
-### Mobile first
+## 8. Sobre as Desenvolvedores
 
-O conceito de [_mobile
-first_](https://tableless.com.br/mobile-first-a-arte-de-pensar-com-foco/) faz
-referência a um processo de desenho e desenvolvimento que parte de como se vê e
-como funciona uma aplicação primeiro em um dispositivo móvel e mais adiante se
-analisa como adaptar a aplicação à telas progressivamente maiores. Esta é uma
-contraposição ao modelo tradicional, no qual primeiro se desenha os websites (ou
-webapps) para desktops e depois os adaptam para telas menores.
-
-A motivação aqui é se assegurar que desde o começo sejam desenhadas telas
-_responsivas_. Dessa forma, começamos com a aparência e o comportamento do
-aplicativo em uma tela e ambiente móvel.
-
-### Múltiplas telas
-
-Em projetos anteriores, nossas aplicações eram compostas de apenas uma tela
-_principal_ (uma só _página_). Neste projeto, precisaremos dividir nossa
-interface em várias _views_ ou _pages_ e oferecer uma maneira de navegar entre
-essas telas. Esse problema pode ser resolvido de várias maneiras: com arquivos
-HTML independentes (cada um com seu próprio URL) e links tradicionais; mantendo
-na memória e renderizando condicionalmente (sem atualizar a página);
-[manipulando o histórico do
-navegador](https://developer.mozilla.org/pt-BR/docs/Web/API/History_API)
-com
-[`window.history`](https://developer.mozilla.org/es/docs/Web/API/Window/history).
-Neste projeto, convidamos você a explorar opções e decidir sobre uma opção de
-implementação.
-
-### Gravação de dados
-
-Nos projetos anteriores, consumimos dados, mas ainda não tínhamos escrito dados
-(salvar alterações, criar dados, excluir, etc). Neste projeto, você precisará
-criar (salvar) novos dados, além de ler, atualizar e modificar os dados
-existentes. Esses dados podem ser salvos remotamente usando o
-[Firebase](https://firebase.google.com/).
-
-Para usar o Firebase, você deve criar um projeto no console do Firebase e
-instale a dependência `firebase` usando `npm`.
-Leia [instruções passo a passo aqui](https://firebase.google.com/docs/web/setup).
-
-Outras:
-
-* [Mobile
-  First](https://tableless.com.br/mobile-first-a-arte-de-pensar-com-foco/)
-* [Mobile First Is NOT Mobile Only - Nielsen Norman
-  Group](https://www.nngroup.com/articles/mobile-first-not-mobile-only/)
-* [Flexbox - CSS
-  Tricks](https://css-tricks.com/snippets/css/a-guide-to-flexbox/)
-* [Módulos:
-  Export](https://developer.mozilla.org/pt-BR/docs/Web/JavaScript/Reference/Statements/export)
-* [Módulos:
-  Import](https://developer.mozilla.org/es/docs/Web/JavaScript/Referencia/Sentencias/import)
+Vitoria Cabral: [Linkedin](https://www.linkedin.com/in/vitoria-cabral-oliveira/)
+Raquel Maia: [Linkedin](https://www.linkedin.com/in/raquel-maia-860/)
+Larissa Korz: [Linkedin](https://www.linkedin.com/in/larissakorz/)
