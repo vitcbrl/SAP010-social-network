@@ -15,6 +15,9 @@ import {
   doc,
   updateDoc,
   addDoc,
+  increment,
+  getDocs,
+  collection,
 } from 'firebase/firestore/lite';
 
 import {
@@ -25,6 +28,8 @@ import {
   userStateLogout,
   deletePost,
   addPost,
+  likePost,
+  getPosts,
 } from '../src/lib/index';
 
 jest.mock('firebase/auth');
@@ -136,5 +141,55 @@ describe('addPost', () => {
     // Assert - Verificação do resultado do teste
     expect(addDoc).toHaveBeenCalledTimes(1);
     // Verifica se a função addDoc foi chamada exatamente uma vez durante a execução de addPost
+  });
+});
+
+describe('likePost', () => {
+  it('deve incrementar o contador de likes no banco de dados', async () => {
+    const postId = 'postId';
+    const db = getFirestore();
+    const docRef = doc(db, 'posts', postId);
+    const updateDocMock = jest.fn();
+    updateDoc.mockImplementation(updateDocMock);
+
+    await likePost(postId);
+
+    expect(updateDocMock).toHaveBeenCalledWith(docRef, {
+      like: increment(1),
+    });
+  });
+});
+
+describe('getPosts', () => {
+  let db;
+
+  beforeAll(() => {
+    db = getFirestore();
+  });
+
+  it('retorna uma lista de posts', async () => {
+    // Mock do Firestore
+    const postsColMock = collection(db, 'posts');
+    const postsSnapshotMock = {
+      docs: [
+        { id: '1', data: () => ({ title: 'Post 1' }) },
+        { id: '2', data: () => ({ title: 'Post 2' }) },
+        { id: '3', data: () => ({ title: 'Post 3' }) },
+      ],
+    };
+    getDocs.mockResolvedValueOnce(postsSnapshotMock);
+
+    // Chamar a função getPosts
+    const result = await getPosts(db);
+
+    // Verificar o resultado
+    expect(result).toHaveLength(3);
+    expect(result[0]).toEqual({ id: '1', title: 'Post 1' });
+    expect(result[1]).toEqual({ id: '2', title: 'Post 2' });
+    expect(result[2]).toEqual({ id: '3', title: 'Post 3' });
+
+    // Verificar as chamadas de função
+    expect(collection).toHaveBeenCalledWith(db, 'posts');
+    expect(getDocs).toHaveBeenCalledWith(postsColMock);
   });
 });
