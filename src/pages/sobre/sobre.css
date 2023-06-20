@@ -1,0 +1,39 @@
+/* PÁGINA SOBRE */
+
+.title-sobre{
+  color:  #60c063;
+  font-size: 2.5em;
+  text-align: center;
+  margin-bottom: 30px;
+  margin-top: 20px;
+}
+
+.sobre-tech{
+  color: white;
+  font-size: 1.3em;
+  text-align: justify;
+  margin: 10px 20px 30px 20px;
+
+}
+
+.foto{
+  float:left;
+  margin: 0 10px 10px;
+  height: 100px;
+  border-radius: 50%;
+}
+
+.p_sobre{
+  color: white;
+  font-size: 1.2em;
+  margin-top: 10px;
+}
+
+.sobre-lari, .sobre-vi, .sobre-raq{
+color:  #60c063;
+margin: 10px 20px 30px 20px;
+}
+
+.text-menor{
+  display: none;
+}

@@ -1,0 +1,118 @@
+.geral{
+  width: 100%;
+  height: 4rem;
+  background: #3a3939;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: white;
+  font-size: 25px;
+}
+
+.Techsisters{
+  margin-left: 1rem;
+}
+
+.links{
+  margin-right: 3rem;
+}
+
+.inicioA, .sobreA, .nova-nt {
+  text-decoration: none;
+  color: black;
+  padding: 7px 20px;
+  border-radius: 30px;
+  background-color: #09E111;
+  margin-left: 15px;
+}
+
+.inicioA:hover, .sobreA:hover, .btn-entrar:hover, .nova-conta:hover{
+  background-color: #60c063;
+}
+
+#voltar:hover{
+  color: white;
+}
+
+footer{
+  color: white;
+  text-align: center;
+}
+
+.github{
+  color: white;
+  text-decoration: none;
+}
+
+/* PÁGINA POST */
+
+.overview-title {
+  color: white;
+  margin: 20px 30px 30px 30px;
+  text-align: center;
+}
+
+
+.feed-novo-post{
+  display: flex;
+  justify-content: center;
+  margin: 30px;
+}
+
+.feed-text-box{
+  width: 51%;
+  height: 100%;
+  background-color: rgba(255, 255, 255, 0.19);
+  border: none;
+  outline: none;
+}
+
+.feed-text-box::placeholder{
+  color: #60c063;
+  padding: 5px;
+}
+
+.contentTitle, .contentParag{
+  color: rgb(235, 228, 228);
+  font-size: 1.5rem;
+}
+
+.content-post{
+  display: flex;
+  justify-content: center;
+}
+
+.content-post > .content {
+  display: flex;
+  flex-direction:column;
+  justify-content: center;
+  border: 3px solid #60c063;
+  margin-bottom: 20px;
+  width: 53.2%;
+  height: 100%;
+  border-radius: 20px;
+}
+
+#post-button{
+  background: #60c063;
+  border: none;
+  width: 70px;
+}
+
+.contentTitle  {
+  color: white;
+  margin-bottom: 10px;
+}
+
+.button-content,  .like-button, .edit-button, .delete-button{
+  padding: 5px;
+  font-size: 23px;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  font-family: 'Iceland', cursive;
+}
+
+.edit-button:hover, .delete-button:hover{
+  color: #504e4e;
+}
