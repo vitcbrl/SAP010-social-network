@@ -33,7 +33,7 @@ Por isso, criamos um espaço seguro onde vocês podem compartilhar, se expressar
             <img src="img/vi.jpeg" alt="Vitoria Cabral" class="foto"/>
             <h2 class="h2_sobre">Vitoria Cabral</h2>
             <p class="p_sobre">
-                Hello, World! Eu sou a Vitoria Cabral, com raízes em São Paulo mas atualmente morando em Fortaleza-CE. Estou cursando Análise e Desenvolvimento de Sistemas, além disso, também estou no BootCamp da Laboratória me aprofundando em HTML, CSS, JavaScript e outras tecnologias. <br>
+                Hello, World! Eu sou a Vitoria Cabral, com raízes em São Paulo mas atualmente morando em Fortaleza-CE. Estou cursando Análise e Desenvolvimento de Sistemas, além disso, também estou no BootCamp da Laboratória me aprofundando em HTML, CSS, JavaScript e outras tecnologias. Busco ampliar meu horizonte de conhecimento e no processo ajudar outras mulheres que estão seguindo o mesmo caminho, sendo sempre proativa, empatica e com foco nos meus objetivos. <br>
             </p>
         </div>
     </section>
