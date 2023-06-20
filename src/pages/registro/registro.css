@@ -113,6 +113,10 @@ ion-icon{
   margin: 10px 60px;
 }
 
+.voltar{
+  text-align: center;
+  margin-top: 25px;
+}
 #voltar{
   font-size: 20px;
   text-decoration: none;
