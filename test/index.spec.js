@@ -126,11 +126,8 @@ describe('addPost', () => {
     addDoc.mockResolvedValueOnce();
 
     await addPost(db, post);
-    // Chama a função addPost passando o banco de dados (db)
-    /* e o post como argumentos */
 
     expect(addDoc).toHaveBeenCalledTimes(1);
-    // Verifica se a função addDoc foi chamada exatamente uma vez durante a execução de addPost
   });
 });
 
