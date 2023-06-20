@@ -23,6 +23,7 @@
     "no-console": "off",
     "no-restricted-globals": "off",
     "no-use-before-define": "off",
+    "implicit-arrow-linebreak": "off",
     "no-shadow": "off",
     "linebreak-style": 0,
     "prefer-destructuring": 0,

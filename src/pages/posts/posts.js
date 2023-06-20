@@ -1,4 +1,4 @@
-import { db, auth } from '../firebase';
+import { db, auth } from '../../lib/firebase';
 import {
   likePost,
   editPost,
@@ -6,7 +6,7 @@ import {
   getPosts,
   addPost,
   userStateChanged, userStateLogout,
-} from '../lib/index.js';
+} from '../../lib/index.js';
 
 export default () => {
   const container = document.createElement('div');
