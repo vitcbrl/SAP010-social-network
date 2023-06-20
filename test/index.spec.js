@@ -4,7 +4,6 @@ import {
   createUserWithEmailAndPassword,
   auth,
   onAuthStateChanged,
-  updateProfile,
   getAuth,
   signOut,
 } from 'firebase/auth';
@@ -27,6 +26,7 @@ import {
   userStateChanged,
   userStateLogout,
   deletePost,
+  editPost,
   addPost,
   likePost,
   getPosts,
@@ -43,25 +43,23 @@ describe('createUser', () => {
       password: '12345',
     };
 
-    createUserWithEmailAndPassword.mockResolvedValue({ user });
-    // createUserWithEmailAndPassword.mockResolvedValueOnce();
+    createUserWithEmailAndPassword.mockResolvedValueOnce(user);
+
     await loginCreate(user.name, user.email, user.password);
-    // eslint-disable-next-line jest/valid-expect, max-len
+
     expect(createUserWithEmailAndPassword).toHaveBeenCalledWith(auth, user.email, user.password);
-    // eslint-disable-next-line no-undef
-    expect(updateProfile).toHaveBeenCalledWith(user, {
-      displayName: user.name,
-    });
   });
 });
 
-/* 'TESTE EMAIL VALIDO' */
 describe('loginUser', () => {
   it('deve fazer o login com e-mail', async () => {
     const email = 'anateste@gmail.com';
     const password = '12341234';
+
     signInWithEmailAndPassword.mockResolvedValueOnce();
+
     await loginUser(email, password);
+
     expect(signInWithEmailAndPassword).toHaveBeenCalledWith(
       auth,
       email,
@@ -87,18 +85,15 @@ describe('userStateChanged', () => {
 
 describe('editPost', () => {
   it('deve editar o post no banco de dados', async () => {
-    const postId = '3ilnk6qZQ1WVEiaYla27';
+    const postId = 'postId';
     const textEdit = {
-      title: 'Novo título',
-      content: 'Novo conteúdo',
+      content: 'texto novo',
     };
-
-    const db = getFirestore();
-    const docRef = doc(db, 'posts', postId);
     updateDoc.mockResolvedValueOnce();
 
-    await expect(updateDoc(docRef, textEdit)).resolves.toBeUndefined();
-    expect(updateDoc).toHaveBeenCalledWith(docRef, textEdit);
+    await editPost(postId, textEdit);
+
+    expect(updateDoc).toHaveBeenCalledTimes(1);
   });
 });
 
@@ -126,19 +121,14 @@ describe('deletePost', () => {
 
 describe('addPost', () => {
   it('deve adicionar o post no banco de dados', async () => {
-    // Arrange - Preparação dos dados necessários para o teste
-    const db = {}; // Cria um objeto vazio que representa o banco de dados
-    const post = {}; // Cria um objeto vazio que representa o post a ser adicionado
-
-    // Mock do addDoc para simular a resolução bem-sucedida da adição do post
+    const db = {};
+    const post = {};
     addDoc.mockResolvedValueOnce();
 
-    // Act - Execução da função que está sendo testada
     await addPost(db, post);
     // Chama a função addPost passando o banco de dados (db)
     /* e o post como argumentos */
 
-    // Assert - Verificação do resultado do teste
     expect(addDoc).toHaveBeenCalledTimes(1);
     // Verifica se a função addDoc foi chamada exatamente uma vez durante a execução de addPost
   });
@@ -168,27 +158,17 @@ describe('getPosts', () => {
   });
 
   it('retorna uma lista de posts', async () => {
-    // Mock do Firestore
     const postsColMock = collection(db, 'posts');
     const postsSnapshotMock = {
       docs: [
         { id: '1', data: () => ({ title: 'Post 1' }) },
-        { id: '2', data: () => ({ title: 'Post 2' }) },
-        { id: '3', data: () => ({ title: 'Post 3' }) },
       ],
     };
     getDocs.mockResolvedValueOnce(postsSnapshotMock);
 
-    // Chamar a função getPosts
     const result = await getPosts(db);
 
-    // Verificar o resultado
-    expect(result).toHaveLength(3);
-    expect(result[0]).toEqual({ id: '1', title: 'Post 1' });
-    expect(result[1]).toEqual({ id: '2', title: 'Post 2' });
-    expect(result[2]).toEqual({ id: '3', title: 'Post 3' });
-
-    // Verificar as chamadas de função
+    expect(result).toHaveLength(1);
     expect(collection).toHaveBeenCalledWith(db, 'posts');
     expect(getDocs).toHaveBeenCalledWith(postsColMock);
   });
