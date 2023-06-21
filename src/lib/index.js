@@ -53,11 +53,11 @@ export function userStateLogout() {
   signOut(authLogout);
 }
 
-export async function likePost(postId) {
+export async function likePost(postId, liked) {
   const db = getFirestore(app);
   const docRef = doc(db, 'posts', postId);
   await updateDoc(docRef, {
-    like: increment(1),
+    like: increment(liked ? 1 : -1),
   });
 }
 
