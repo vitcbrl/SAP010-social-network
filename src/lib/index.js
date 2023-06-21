@@ -14,11 +14,13 @@ import {
   doc,
   updateDoc,
   deleteDoc,
+  getDoc,
   increment,
   collection,
   getDocs,
   addDoc,
   arrayUnion,
+  arrayRemove,
 } from 'firebase/firestore/lite';
 import { auth, app } from './firebase.js';
 
@@ -54,13 +56,27 @@ export function userStateLogout() {
   signOut(authLogout);
 }
 
-export async function likePost(postId, userId) {
-  const db = getFirestore(app);
-  const docRef = doc(db, 'posts', postId);
-  await updateDoc(docRef, {
-    like: arrayUnion(userId),
-  });
-}
+// Update the likePost function
+export const likePost = async (db,postId, userId) => {
+  // Check if the user is logged in
+  if (!auth.currentUser) {
+    throw new Error('User is not logged in.');
+  }
+
+  // Get the post document
+  const postRef = doc(db, 'posts', postId);
+  const postSnap = await getDoc(postRef);
+  const postData = postSnap.data();
+
+  const isLiked = postData.like.includes(userId);
+
+  const updatedLikeArray = isLiked
+    ? postData.like.filter((id) => id !== userId)
+    : [...postData.like, userId];
+
+  await updateDoc(postRef, { like: updatedLikeArray });
+};
+
 
 export async function editPost(postId, textEdit) {
   const db = getFirestore(app);

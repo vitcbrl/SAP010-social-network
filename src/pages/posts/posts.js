@@ -1,11 +1,13 @@
 import { db, auth } from '../../lib/firebase.js';
+import { getDoc, doc, updateDoc, arrayRemove, arrayUnion } from 'firebase/firestore/lite';
 import {
   likePost,
   editPost,
   deletePost,
   getPosts,
   addPost,
-  userStateChanged, userStateLogout,
+  userStateChanged,
+  userStateLogout,
 } from '../../lib/index.js';
 
 export default () => {
@@ -17,7 +19,7 @@ export default () => {
       <nav class="links">
         <a class="sobreA" href="#sobre">SOBRE</a>
         <a class="inicioA" href="#login">SAIR</a>
-      </nav>  
+      </nav>
     </header>
 
     <section class="feed-container" id="feed-container">
@@ -70,7 +72,7 @@ export default () => {
   });
 
   async function displayPosts() {
-    postArea.innerHTML = ''; // Limpar o conteúdo anterior
+    postArea.innerHTML = ''; // Clear previous content
 
     try {
       const posts = await getPosts(db);
@@ -82,8 +84,8 @@ export default () => {
             <h3 class="contentTitle">${post.name}</h3>
             <p class="contentParag">${post.conteúdo}</p>
             <div class="button-content">
-              <button class="like-button" data-post-id="${post.id}">❤️</button>
-              <span class="like-count">${post.like}</span>
+              <button class="like-button${post.like.includes(auth.currentUser.uid) ? ' liked' : ''}" data-post-id="${post.id}">❤️</button>
+              <span class="like-count">${post.like.length}</span>
               <button class="edit-button" data-post-id="${post.id}">✏️</button>
               <button class="delete-button" data-post-id="${post.id}">🗑️</button>
             </div>
@@ -92,24 +94,34 @@ export default () => {
         postArea.appendChild(postElement);
 
         const likeButton = postElement.querySelector('.like-button');
+        const likeCountElement = postElement.querySelector('.like-count');
         const editButton = postElement.querySelector('.edit-button');
         const deleteButton = postElement.querySelector('.delete-button');
 
         likeButton.addEventListener('click', async () => {
           const postId = likeButton.getAttribute('data-post-id');
           const likeCountElement = postElement.querySelector('.like-count');
-          //const currentLikeCount = parseInt(likeCountElement.textContent);
-          
-          likePost(postId,auth.currentUser.uid)
-         /* if (likeButton.classList.contains('liked')) {
-            await likePost(postId, false);
-            likeCountElement.textContent = currentLikeCount - 1;
-            likeButton.classList.remove('liked');
-          } else {
-            await likePost(postId, true);
-            likeCountElement.textContent = currentLikeCount + 1;
-            likeButton.classList.add('liked');
-          }*/
+          const currentLikeCount = parseInt(likeCountElement.textContent);
+        
+          try {
+            // Call the likePost function to like or unlike the post
+            await likePost(db, postId, auth.currentUser.uid);
+        
+            // Update the like count and button appearance
+            const updatedDocRef = await getDoc(doc(db, 'posts', postId));
+            const updatedLikeCount = updatedDocRef.data().like.length;
+        
+            likeCountElement.textContent = updatedLikeCount;
+        
+            // Add/remove 'liked' class based on whether the user has liked the post
+            if (updatedDocRef.data().like.includes(auth.currentUser.uid)) {
+              likeButton.classList.add('liked');
+            } else {
+              likeButton.classList.remove('liked');
+            }
+          } catch (error) {
+            console.log('Error while liking the post:', error);
+          }
         });
 
         editButton.addEventListener('click', () => {
