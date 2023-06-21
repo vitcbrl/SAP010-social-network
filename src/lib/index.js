@@ -15,12 +15,9 @@ import {
   updateDoc,
   deleteDoc,
   getDoc,
-  increment,
   collection,
   getDocs,
   addDoc,
-  arrayUnion,
-  arrayRemove,
 } from 'firebase/firestore/lite';
 import { auth, app } from './firebase.js';
 
@@ -56,14 +53,11 @@ export function userStateLogout() {
   signOut(authLogout);
 }
 
-// Update the likePost function
-export const likePost = async (db,postId, userId) => {
-  // Check if the user is logged in
+export const likePost = async (db, postId, userId) => {
   if (!auth.currentUser) {
     throw new Error('User is not logged in.');
   }
 
-  // Get the post document
   const postRef = doc(db, 'posts', postId);
   const postSnap = await getDoc(postRef);
   const postData = postSnap.data();
@@ -76,7 +70,6 @@ export const likePost = async (db,postId, userId) => {
 
   await updateDoc(postRef, { like: updatedLikeArray });
 };
-
 
 export async function editPost(postId, textEdit) {
   const db = getFirestore(app);
@@ -92,18 +85,14 @@ export async function deletePost(postId) {
   await deleteDoc(doc(db, 'posts', postId));
 }
 
-// Adicione um post ao banco de dados
 export async function addPost(db, post) {
-  // db representa o objeto do banco de dados
-  // post representa o objeto do post a ser adicionado
-  const postsCol = collection(db, 'posts'); // Referência à coleção 'posts' no banco de dados
-  await addDoc(postsCol, post); // Adiciona o documento (post) à coleção 'posts'
+  const postsCol = collection(db, 'posts');
+  await addDoc(postsCol, post);
 }
 
 export async function getPosts(db) {
   const postsCol = collection(db, 'posts');
   const postsSnapshot = await getDocs(postsCol);
-  // eslint-disable-next-line no-shadow
   const postsList = postsSnapshot.docs.map((doc) => ({
     id: doc.id,
     ...doc.data(),
