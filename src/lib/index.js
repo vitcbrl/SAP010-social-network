@@ -18,6 +18,7 @@ import {
   collection,
   getDocs,
   addDoc,
+  arrayUnion,
 } from 'firebase/firestore/lite';
 import { auth, app } from './firebase.js';
 
@@ -53,11 +54,11 @@ export function userStateLogout() {
   signOut(authLogout);
 }
 
-export async function likePost(postId, liked) {
+export async function likePost(postId, userId) {
   const db = getFirestore(app);
   const docRef = doc(db, 'posts', postId);
   await updateDoc(docRef, {
-    like: increment(liked ? 1 : -1),
+    like: arrayUnion(userId),
   });
 }
 

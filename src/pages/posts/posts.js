@@ -1,4 +1,4 @@
-import { db, auth } from '../../lib/firebase';
+import { db, auth } from '../../lib/firebase.js';
 import {
   likePost,
   editPost,
@@ -98,9 +98,10 @@ export default () => {
         likeButton.addEventListener('click', async () => {
           const postId = likeButton.getAttribute('data-post-id');
           const likeCountElement = postElement.querySelector('.like-count');
-          const currentLikeCount = parseInt(likeCountElement.textContent);
-
-          if (likeButton.classList.contains('liked')) {
+          //const currentLikeCount = parseInt(likeCountElement.textContent);
+          
+          likePost(postId,auth.currentUser.uid)
+         /* if (likeButton.classList.contains('liked')) {
             await likePost(postId, false);
             likeCountElement.textContent = currentLikeCount - 1;
             likeButton.classList.remove('liked');
@@ -108,7 +109,7 @@ export default () => {
             await likePost(postId, true);
             likeCountElement.textContent = currentLikeCount + 1;
             likeButton.classList.add('liked');
-          }
+          }*/
         });
 
         editButton.addEventListener('click', () => {
