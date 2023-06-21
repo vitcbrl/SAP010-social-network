@@ -82,7 +82,7 @@ export default () => {
             <p class="contentParag">${post.conteúdo}</p>
             <div class="button-content">
               <button class="like-button" data-post-id="${post.id}">❤️</button>
-              <span class="like-count">0</span>
+              <span class="like-count">${post.like}</span>
               <button class="edit-button" data-post-id="${post.id}">✏️</button>
               <button class="delete-button" data-post-id="${post.id}">🗑️</button>
             </div>
@@ -96,14 +96,15 @@ export default () => {
 
         likeButton.addEventListener('click', async () => {
           const postId = likeButton.getAttribute('data-post-id');
-          await likePost(postId);
           const likeCountElement = postElement.querySelector('.like-count');
           const currentLikeCount = parseInt(likeCountElement.textContent);
 
           if (likeButton.classList.contains('liked')) {
+            await likePost(postId, false);
             likeCountElement.textContent = currentLikeCount - 1;
             likeButton.classList.remove('liked');
           } else {
+            await likePost(postId, true);
             likeCountElement.textContent = currentLikeCount + 1;
             likeButton.classList.add('liked');
           }

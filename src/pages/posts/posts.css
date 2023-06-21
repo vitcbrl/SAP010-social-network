@@ -116,3 +116,7 @@ footer{
 .edit-button:hover, .delete-button:hover{
   color: #504e4e;
 }
+
+.like-count{
+  color: white;
+}
