@@ -1,5 +1,5 @@
+import { getDoc, doc } from 'firebase/firestore/lite';
 import { db, auth } from '../../lib/firebase.js';
-import { getDoc, doc, updateDoc, arrayRemove, arrayUnion } from 'firebase/firestore/lite';
 import {
   likePost,
   editPost,
@@ -94,33 +94,26 @@ export default () => {
         postArea.appendChild(postElement);
 
         const likeButton = postElement.querySelector('.like-button');
-        const likeCountElement = postElement.querySelector('.like-count');
         const editButton = postElement.querySelector('.edit-button');
         const deleteButton = postElement.querySelector('.delete-button');
 
         likeButton.addEventListener('click', async () => {
           const postId = likeButton.getAttribute('data-post-id');
           const likeCountElement = postElement.querySelector('.like-count');
-          const currentLikeCount = parseInt(likeCountElement.textContent);
-        
+
           try {
-            // Call the likePost function to like or unlike the post
             await likePost(db, postId, auth.currentUser.uid);
-        
-            // Update the like count and button appearance
             const updatedDocRef = await getDoc(doc(db, 'posts', postId));
             const updatedLikeCount = updatedDocRef.data().like.length;
-        
             likeCountElement.textContent = updatedLikeCount;
-        
-            // Add/remove 'liked' class based on whether the user has liked the post
+
             if (updatedDocRef.data().like.includes(auth.currentUser.uid)) {
               likeButton.classList.add('liked');
             } else {
               likeButton.classList.remove('liked');
             }
           } catch (error) {
-            console.log('Error while liking the post:', error);
+            console.log('Error', error);
           }
         });
 
