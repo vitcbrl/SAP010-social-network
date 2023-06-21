@@ -53,6 +53,7 @@ export default () => {
     if (textPost.trim() !== '') {
       const post = {
         name: auth.currentUser.displayName,
+        author: auth.currentUser.uid,
         conteúdo: textPost,
         like: [],
       };
