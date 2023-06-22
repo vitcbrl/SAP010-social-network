@@ -53,8 +53,10 @@ export function userStateLogout() {
   signOut(authLogout);
 }
 
-export const likePost = async (db, postId, userId) => {
-  if (!auth.currentUser) {
+export const likePost = async (db, postId, userId, auth) => {
+  const currentUser = auth.currentUser;
+
+  if (!currentUser) {
     throw new Error('User is not logged in.');
   }
 

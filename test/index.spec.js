@@ -14,9 +14,10 @@ import {
   doc,
   updateDoc,
   addDoc,
-  increment,
   getDocs,
   collection,
+  userId,
+  getDoc,
 } from 'firebase/firestore/lite';
 
 import {
@@ -133,17 +134,26 @@ describe('addPost', () => {
 
 describe('likePost', () => {
   it('deve incrementar o contador de likes no banco de dados', async () => {
-    const postId = 'postId';
+    const postId = 'IqTvgPPiC0PQTTlPeSdg';
     const db = getFirestore();
     const docRef = doc(db, 'posts', postId);
     const updateDocMock = jest.fn();
+    const auth = {
+      currentUser: {
+      },
+    };
+
+    const postSnap = { data: () => ({ like: [] }) };
+
+    const getDocMock = jest.fn().mockResolvedValue(postSnap);
+    getDoc.mockImplementation(getDocMock);
+
     updateDoc.mockImplementation(updateDocMock);
 
-    await likePost(postId);
+    await likePost(db, postId, userId, auth);
 
-    expect(updateDocMock).toHaveBeenCalledWith(docRef, {
-      like: increment(1),
-    });
+    expect(updateDocMock).toHaveBeenCalled();
+    expect(updateDocMock).toHaveBeenNthCalledWith(1, docRef, { like: [undefined] });
   });
 });
 
