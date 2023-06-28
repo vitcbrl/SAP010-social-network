@@ -4,9 +4,17 @@ import registro from './pages/registro/registro.js';
 import posts from './pages/posts/posts.js';
 
 import { db } from './lib/firebase.js';
-import { getPosts } from './lib/index.js';
+import { getPosts, userStateChanged } from './lib/index.js';
 
 const main = document.querySelector('#root');
+
+function redirectAuthUser(user) {
+  if (user) {
+    window.location.hash = '#posts';
+  } else {
+    window.location.hash = '#login';
+  }
+}
 
 const init = () => {
   main.innerHTML = '';
@@ -31,6 +39,7 @@ const init = () => {
 window.addEventListener('load', () => {
   getPosts(db).then((data) => console.log(data));
   init();
+  userStateChanged(redirectAuthUser);
 });
 
 window.addEventListener('hashchange', init);
