@@ -18,7 +18,7 @@ export default () => {
       <h1 class="Techsisters">Techsisters</h1>
       <nav class="links">
         <a class="sobreA" href="#sobre">SOBRE</a>
-        <a class="inicioA" href="#login">SAIR</a>
+        <button class="inicioA">SAIR</button>
       </nav>
     </header>
 
@@ -42,7 +42,7 @@ export default () => {
   btnSair.addEventListener('click', async () => {
     try {
       console.log('Deslogou');
-      await userStateLogout(userStateChanged);
+      userStateLogout(userStateChanged);
       window.location.href = '#login';
     } catch (error) {
       console.log('Erro ao fazer logout:', error);
