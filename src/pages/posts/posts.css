@@ -17,13 +17,22 @@
   margin-right: 3rem;
 }
 
-.inicioA, .sobreA, .nova-nt {
+.sobreA, .nova-nt {
   text-decoration: none;
   color: black;
   padding: 7px 20px;
   border-radius: 30px;
   background-color: #09E111;
   margin-left: 15px;
+}
+
+.inicioA{
+  background-color: #09E111;
+  padding: 7px 32px;
+  border-radius: 30px;
+  font-family: 'Iceland', cursive;
+  font-size: 23px;
+  cursor: pointer;
 }
 
 .inicioA:hover, .sobreA:hover, .btn-entrar:hover, .nova-conta:hover{
