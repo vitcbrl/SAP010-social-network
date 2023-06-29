@@ -33,6 +33,11 @@ body{
   .content{
     display: flex;
     flex-direction: column;
+    justify-content: center;
+  }
+
+  .contentParag{
+    margin-left: 10px;
   }
 
   .inicio{
@@ -50,6 +55,7 @@ body{
 
   .link-google{
     margin-left: 2rem;
+    text-decoration: none;
   }
 
   .label{
