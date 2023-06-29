@@ -22,16 +22,10 @@ import {
 import { auth, app } from './firebase.js';
 
 export const loginGoogle = () => {
-  const auth = getAuth();
   const provider = new GoogleAuthProvider();
-
-  return signInWithPopup(auth, provider)
-    .then(() => {
-    })
-    .catch((error) => {
-      const errorCode = error.code;
-      alert(errorCode);
-    });
+  // GoogleAuthProviderclasse,
+  // que faz parte da biblioteca Firebase Authentication.
+  return signInWithPopup(auth, provider);
 };
 
 export const loginUser = (email, password) => signInWithEmailAndPassword(auth, email, password);
@@ -53,12 +47,7 @@ export function userStateLogout() {
   signOut(authLogout);
 }
 
-export const likePost = async (db, postId, userId, auth) => {
-  const currentUser = auth.currentUser;
-  if (!currentUser) {
-    throw new Error('User is not logged in.');
-  }
-
+export const likePost = async (db, postId, userId) => {
   const postRef = doc(db, 'posts', postId);
   const postSnap = await getDoc(postRef);
   const postData = postSnap.data();

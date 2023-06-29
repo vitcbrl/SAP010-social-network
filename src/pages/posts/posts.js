@@ -102,7 +102,7 @@ export default () => {
           const likeCountElement = postElement.querySelector('.like-count');
 
           try {
-            await likePost(db, postId, auth.currentUser.uid, auth);
+            await likePost(db, postId, auth.currentUser.uid);
             const updatedDocRef = await getDoc(doc(db, 'posts', postId));
             const updatedLikeCount = updatedDocRef.data().like.length;
             likeCountElement.textContent = updatedLikeCount;
