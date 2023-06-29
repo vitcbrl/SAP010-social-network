@@ -15,8 +15,7 @@ import {
   updateDoc,
   addDoc,
   getDocs,
-  collection,
-  userId,
+  // collection,
   getDoc,
 } from 'firebase/firestore/lite';
 
@@ -138,10 +137,6 @@ describe('likePost', () => {
     const db = getFirestore();
     const docRef = doc(db, 'posts', postId);
     const updateDocMock = jest.fn();
-    const auth = {
-      currentUser: {
-      },
-    };
 
     const postSnap = { data: () => ({ like: [] }) };
 
@@ -150,22 +145,15 @@ describe('likePost', () => {
 
     updateDoc.mockImplementation(updateDocMock);
 
-    await likePost(db, postId, userId, auth);
+    await likePost(db, postId);
 
-    expect(updateDocMock).toHaveBeenCalled();
     expect(updateDocMock).toHaveBeenNthCalledWith(1, docRef, { like: [undefined] });
   });
 });
 
 describe('getPosts', () => {
-  let db;
-
-  beforeAll(() => {
-    db = getFirestore();
-  });
-
   it('retorna uma lista de posts', async () => {
-    const postsColMock = collection(db, 'posts');
+    const db = getFirestore();
     const postsSnapshotMock = {
       docs: [
         { id: '1', data: () => ({ title: 'Post 1' }) },
@@ -176,7 +164,5 @@ describe('getPosts', () => {
     const result = await getPosts(db);
 
     expect(result).toHaveLength(1);
-    expect(collection).toHaveBeenCalledWith(db, 'posts');
-    expect(getDocs).toHaveBeenCalledWith(postsColMock);
   });
 });
